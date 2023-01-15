@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /clear-view-cache
+Disallow: /clear-app-cache
+
+Sitemap: https://nsnhotels.com/sitemapindex.xml
+Sitemap: https://nsnhotels.com/sitemapCity.xml
+Sitemap: https://nsnhotels.com/sitemapBlog.xml

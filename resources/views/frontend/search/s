@@ -1,0 +1,195 @@
+double calculateSubTotalPrice(double unit_price, int quantity, int days) {
+  if (days == 0 || days < 0) {
+    return unit_price * quantity;
+  } else {
+    return unit_price * quantity * days;
+  }
+}
+
+double calculateBeforeDiscountSubTotalPrice(double unit_price, int quantity) {
+  return PrimitiveConversions.getDouble(unit_price * quantity) ?? 0;
+}
+
+double calculateDiscount(index, List<Room> _rooms, quantity) {
+  final _room = _rooms[index];
+  if (_room.discountPercent == null) {
+    return 0;
+  } else {
+    return PrimitiveConversions.getDouble(_room.discountPercent)!;
+  }
+  // switch (quantity) {
+  //   case 1:
+  //     return PrimitiveConversions.getDouble(_room.discountPercent) ?? 0;
+  //   case 2:
+  //     return PrimitiveConversions.getDouble(_room.doubleDiscount) ?? 0;
+  //   case 3:
+  //     return PrimitiveConversions.getDouble(_room.discountPercent) ?? 0;
+  //   case 4:
+  //     return PrimitiveConversions.getDouble(_room.discountPercent) ?? 0;
+  //   case 5:
+  //     return PrimitiveConversions.getDouble(_room.discountPercent) ?? 0;
+  //   default:
+  //     return PrimitiveConversions.getDouble(_room.discountPercent) ?? 0;
+  // }
+}
+
+double calculateDiscountPrice(double price, double discount_percent) {
+  final _disc_amt = price * (discount_percent / 100);
+  final _amt = price - _disc_amt;
+  return _amt;
+}
+
+calculateMRP(double price, double percent) {
+  // print("disc perc: $percent");
+  if (percent == 0) {
+    return price;
+  } else {
+    final _disc = percent / 100;
+    final _price = price / _disc;
+    return PrimitiveConversions.getDouble(_price);
+  }
+}
+
+double calculateBeforeDiscountPrice(index, List<Room> _rooms, quantity) {
+  final _prices = List.generate(
+      _rooms.length,
+      (index) => {
+            "dicount": calculateDiscount(index, _rooms, quantity),
+            "price": calculateUnitPrice(index, _rooms, quantity),
+            "mrp": calculateMRP(calculateUnitPrice(index, _rooms, quantity),
+                calculateDiscount(index, _rooms, quantity))
+          });
+  // print(_prices);
+  return _prices[index]['mrp'];
+}
+
+double calculateDiscountAmount(index, List<Room> _rooms, quantity) {
+  final _prices = List.generate(
+      _rooms.length,
+      (index) => {
+            "dicount": calculateDiscount(index, _rooms, quantity),
+            "price": calculateUnitPrice(index, _rooms, quantity),
+            "mrp": calculateMRP(calculateUnitPrice(index, _rooms, quantity),
+                calculateDiscount(index, _rooms, quantity))
+          });
+  return _prices[index]['mrp'] - _prices[index]['price'];
+}
+
+double calculateUnitPrice(index, List<Room> _rooms, int quantity) {
+  final _room = _rooms[index];
+  switch (quantity) {
+    case 1:
+      return PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+    case 2:
+      return PrimitiveConversions.getDouble(_room.twopersonprice!)!;
+    case 3:
+      return PrimitiveConversions.getDouble(_room.threepersonprice!)!;
+    case 4:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! +
+              PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+    case 5:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! +
+              PrimitiveConversions.getDouble(_room.twopersonprice!)!;
+    case 6:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! +
+              PrimitiveConversions.getDouble(_room.threepersonprice!)!;
+    case 7:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 2) +
+              PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+    case 8:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)! * 2
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 2) +
+              PrimitiveConversions.getDouble(_room.twopersonprice!)!;
+    case 9:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! * 3;
+    case 10:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 3) +
+              PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+    case 11:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 3) +
+              PrimitiveConversions.getDouble(_room.twopersonprice!)!;
+    case 12:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! * 4;
+    case 13:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 4) +
+              PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+    case 14:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : (PrimitiveConversions.getDouble(_room.threepersonprice!)! * 4) +
+              PrimitiveConversions.getDouble(_room.twopersonprice!)!;
+    case 15:
+      return PrimitiveConversions.getDouble(_room.fourpersonprice) != null
+          ? PrimitiveConversions.getDouble(_room.fourpersonprice!)!
+          : PrimitiveConversions.getDouble(_room.threepersonprice!)! * 5;
+    default:
+      return PrimitiveConversions.getDouble(_room.onepersonprice!)!;
+  }
+}
+
+double calculateGST(double _total_price) {
+  if (_total_price > 0 && _total_price < 1000) {
+    return 0.0;
+  } else if (_total_price >= 1001 && _total_price <= 2499) {
+    return PrimitiveConversions.roundDouble(.12 * _total_price, 2);
+  } else {
+    return PrimitiveConversions.roundDouble(.18 * _total_price, 2);
+  }
+}
+
+double calculateTotal(double _total_price, double _gst_amt) {
+  return _total_price + calculateGST(_total_price);
+}
+
+int getChildrenCount(int count) {
+  switch (count) {
+    case 1:
+      return 1;
+    case 2:
+      return 2;
+    case 3:
+      return 4;
+    case 4:
+      return 6;
+    case 5:
+      return 8;
+    default:
+      return 2;
+  }
+}
+
+int getAdultCount(int count) {
+  switch (count) {
+    case 1:
+      return 0;
+    case 2:
+      return 3;
+    case 3:
+      return 6;
+    case 4:
+      return 9;
+    case 5:
+      return 12;
+    default:
+      return 3;
+  }
+}
