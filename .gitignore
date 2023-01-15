@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 public/uploads
 uploads/
+/storage
+/bootstrap
