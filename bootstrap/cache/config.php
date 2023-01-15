@@ -3,15 +3,15 @@
   array (
     'version' => '1.1.6',
     'name' => 'NSN HOTELS',
-    'env' => 'local',
-    'debug' => true,
-    'url' => 'http://www.nsnhotels.com/',
+    'env' => 'production',
+    'debug' => false,
+    'url' => 'https://www.nsnhotels.com/',
     'asset_url' => NULL,
     'timezone' => 'Asia/Calcutta',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:KemNrZl2ByiJ5a9pb3aQcUtncBMA5i82qmdv8sOn3V4=',
+    'key' => 'base64:PAkNhlkfMjWWFr4s9r5H6LbyrgkWzkin/VuKSJpYk0Y=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -210,7 +210,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\laravel\\hotelnsn\\storage\\framework/cache/data',
+        'path' => '/var/www/nsnhotel/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -401,7 +401,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'D:\\laravel\\hotelnsn\\storage\\debugbar',
+      'path' => '/var/www/nsnhotel/storage/debugbar',
       'connection' => NULL,
       'provider' => '',
     ),
@@ -490,13 +490,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laravel\\hotelnsn\\storage\\app',
+        'root' => '/var/www/nsnhotel/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laravel\\hotelnsn\\storage\\app/public',
-        'url' => 'http://www.nsnhotels.com//storage',
+        'root' => '/var/www/nsnhotel/storage/app/public',
+        'url' => 'https://www.nsnhotels.com//storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -634,13 +634,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\laravel\\hotelnsn\\storage\\logs/laravel.log',
+        'path' => '/var/www/nsnhotel/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\laravel\\hotelnsn\\storage\\logs/laravel.log',
+        'path' => '/var/www/nsnhotel/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -704,7 +704,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\laravel\\hotelnsn\\resources\\views/vendor/mail',
+        0 => '/var/www/nsnhotel/resources/views/vendor/mail',
       ),
     ),
     'stream' => 
@@ -856,7 +856,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\laravel\\hotelnsn\\storage\\framework/sessions',
+    'files' => '/var/www/nsnhotel/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -1218,9 +1218,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\laravel\\hotelnsn\\resources\\views',
+      0 => '/var/www/nsnhotel/resources/views',
     ),
-    'compiled' => 'D:\\laravel\\hotelnsn\\storage\\framework\\views',
+    'compiled' => '/var/www/nsnhotel/storage/framework/views',
   ),
   'debug-server' => 
   array (
