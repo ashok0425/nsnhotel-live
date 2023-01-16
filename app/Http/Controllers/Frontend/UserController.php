@@ -245,7 +245,7 @@ class UserController extends Controller
         $user = User::where('phone_number','=',$request->phone_no)->update(['otp' => $otp]);
         if($user){
           $this->sendMessage($otp, $request->phone_no);
-          $this->whatsapp_verification($request->phone_code.$request->phone_no,$otp);
+          return $this->whatsapp_verification($request->phone_code.$request->phone_no,$otp);
           return response()->json($request->all(),200);
         }else{
             return response()->json(0,200);

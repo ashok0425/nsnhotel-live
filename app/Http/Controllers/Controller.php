@@ -130,6 +130,7 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 curl_close($curl);
+return $response;
 }
 
 public function whatsapp_booking($phone,$name,$id,$data,$map){
