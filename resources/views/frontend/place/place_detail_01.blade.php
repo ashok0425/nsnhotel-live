@@ -1,8 +1,8 @@
 @extends('frontend.layouts.template-home')
 
 @push('style')
-    <link rel="stylesheet" href="{{ filepath('splide.css') }}">
-    <link rel="stylesheet" href="{{ filepath('jquery.lightbox.css') }}">
+    <link rel="stylesheet" href="{{ filepath('frontend/splide.css') }}">
+    <link rel="stylesheet" href="{{ filepath('frontend/jquery.lightbox.css') }}">
     <style>
         .banquet_contact input,
         .banquet_contact select,
@@ -608,8 +608,8 @@ $('#booking_type').on('change',function(){
             });
         });
     </script>
-    <script src="{{ filepath('splide.min.js') }}"></script>
-    <script src="{{ filepath('jquery.lightbox.js') }}"></script>
+    <script src="{{ filepath('frontend/splide.min.js') }}"></script>
+    <script src="{{ filepath('frontend/jquery.lightbox.js') }}"></script>
 
 
     <script>
