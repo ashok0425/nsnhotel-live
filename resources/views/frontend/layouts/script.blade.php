@@ -5,7 +5,7 @@
 <script src="{{filepath('frontend/jss/popper.min.js')}}"></script>
 <script src="{{filepath('frontend/jss/bootstrap-4.2.1.js')}}"></script>
 <script src="{{filepath('frontend/jss/owl.carousel.min.js')}}"></script>
-<script src="{{asset('jquery.lazy.min.js')}}"></script>
+<script src="{{filepath('jquery.lazy.min.js')}}"></script>
 <script src="{{filepath('frontend/jss/jqueryeasing.js')}}"></script>
 <!--<script src="{{filepath('frontend/jss/token-autocomplete.js')}}"></script>-->
 <script src="{{filepath('frontend/jss/frontcustom.js')}}"></script>
