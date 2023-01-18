@@ -8,7 +8,7 @@ use App\Models\Amenities;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
-use App\Models\coupon;
+use App\Models\Coupon;
 use App\Models\Place;
 use App\Models\PlaceType;
 use App\Models\Review;
@@ -86,7 +86,7 @@ class PlaceController extends Controller
          $referl_money = ReferelMoney::where('user_id',Auth::id())->where('is_used',0)->sum('price');
          
         //  Coupon
-        $coupon= coupon::get();
+        $coupon= Coupon::get();
         // echo $coupon; die;
 
         // SEO Meta
