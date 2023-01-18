@@ -51,6 +51,9 @@ max-height: 80vh!important;
     background: rgb(255,255,255);
 background: linear-gradient(0deg, var(--color-gray) 50%, var(--color-primary) 50%);
   }
+  .text-capitilize{
+    text-transform: capitalize;
+  }
   </style>
 		<!-- PushAlert -->
 <script type="text/javascript">

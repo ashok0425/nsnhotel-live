@@ -292,7 +292,7 @@ else{
 
 $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.location_name , cities.slug, cities.id as city_id, "" as address, "1city" as type')->join('cities','cities.id','city_location.city_id');
        
-           $citiess = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug, cities.id as city_id, "" as address, "1city" as type')
+           $citiess = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug, cities.id as city_id, "" as addresse, "1city" as type')
                     ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
                     ->where('city_translations.name', 'like', '%' . $keyword . '%')
                     ->orderBy('type', 'asc')

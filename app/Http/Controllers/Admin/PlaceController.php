@@ -339,7 +339,7 @@ $this->whatsapp_review('977'.$request['phone'], $request->name);
 
         $this->whatsapp_booking('977'.$request['phone'],$place->name,$newBooking->id,$data,$map);
         $this->whatsapp_booking('91'.$request['phone'],$place->name,$newBooking->id,$data,$map);
-        // $this->whatsapp_booking('91'.$place_email->phone_number,$place->name,$booking->id,$data,$map);
+        $this->whatsapp_booking('91'.$place_email->phone_number,$place->name,$booking->id,$data,$map);
         $this->whatsapp_booking('919958277997',$place->name,$newBooking->id,$data,$map); 
 
                             // exit;

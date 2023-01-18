@@ -586,11 +586,18 @@ let area='';
                     name=value.slug
                    }
 
-                        html += `<li>
-                                    <a href="#" data-city_id="${value.city_id}" data-hotel_id="${value.hotel_id}" data-area="${area}"><span>
-                                    ${name}</span>${address}</a>
+                        html += `<li class="my-1 pb-1">
+                                    <a href="#" data-city_id="${value.city_id}" data-hotel_id="${value.hotel_id}" data-area="${area}" class="my-0 py-0">
+                                    <span>
+                                    ${name}</span>
+                                    <a class="my-0 py-0 custom-fs-12 text-capitilize"><small>${value.slug}</small>
+                                    </a>
+                                    </a>
                                     <a href=""><i class=\"la la-city\"></i>${type}  <span> 
-                                    ${icon}</span> </a>
+                                    ${icon}</span> 
+                                   
+                                    </a>
+                                  
                                  </li>`;
                     });
                     html += '</ul>';
