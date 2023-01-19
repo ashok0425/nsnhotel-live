@@ -174,8 +174,8 @@
             bDestroy:"true",
 
             lengthMenu: [
-                        [10, 25, 50, 100,-1],
-                        ['10 row', '25 row', '50 row','100 row', 'All Rows']
+                        [10, 25, 50, 100,500,1000,-1],
+                        ['10 row', '25 row', '50 row','100 row','500 rows','1000 rows', 'All Rows']
                     ],
              buttons: [{
                             extend: 'print',
