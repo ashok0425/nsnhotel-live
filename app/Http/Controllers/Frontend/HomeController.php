@@ -274,7 +274,9 @@ $placess = Place::selectRaw("places.id as hotel_id, place_translations.name , pl
         
     $places = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.name, places.address,places.city_id,places.country_id, "2hotel" as type')
                     ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->where('place_translations.name', 'like', '%' . $keyword . '%')
-                    ->orwhere('places.slug', 'like', '%' . $keyword . '%');
+                    ->orwhere('places.slug', 'like', '%' . $keyword . '%')
+                    ->orwhere('places.address', 'like', '%' . $keyword . '%');
+
 
 if(isset($placess)){
 $location = DB::table('places')->selectRaw('"" as hotel_id, "Select Address" AS name , places.slug, places.name, places.address,places.city_id,places.country_id, "3location" as type')
@@ -285,8 +287,7 @@ $q->orWhere('places.id',$value->hotel_id);
 } })->orWhere('places.address', 'like', '%' . $keyword . '%');    
 }
 else{
-  $location = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.city_id,places.city_id,places.country_id, places.address, "3location" as type')
-                    ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->Where('places.address', 'like', '%%' . $keyword . '%%');
+  $location = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.city_id,places.city_id,places.country_id, places.address, "3location" as type')->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->Where('places.address', 'like', '%%' . $keyword . '%%');
 }
 
 
