@@ -170,7 +170,7 @@ transform: translateY(0px)
             </div>
             <div class="pole"></div>
             <div class="redirect">
-              <a href="{{url('/')}}">
+              <a href="{{route('home')}}">
                 back to home
               </a>
             </div>
