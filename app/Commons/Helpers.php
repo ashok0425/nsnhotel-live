@@ -183,7 +183,7 @@ function getImageUrl($image_file,$static=false)
         if (config()['app']['env']=='local') {
             return asset('uploads/'.$image_file);
         }
-        // return \Storage::disk('s3')->exists('uploads/'.$image_file)?'https://d27s5h82rwvc4v.cloudfront.net/uploads/'.$image_file:'';
+        return \Storage::disk('s3')->exists('uploads/'.$image_file)?'https://d27s5h82rwvc4v.cloudfront.net/uploads/'.$image_file:'';
     }
     return "https://via.placeholder.com/300x300?text=NSN";
 }

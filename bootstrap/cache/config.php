@@ -5,7 +5,7 @@
     'name' => 'NSN HOTELS',
     'env' => 'local',
     'debug' => true,
-    'url' => 'https://dinhukhabar.com/',
+    'url' => 'http://127.0.0.1',
     'asset_url' => NULL,
     'timezone' => 'Asia/Calcutta',
     'locale' => 'en',
@@ -496,7 +496,7 @@
       array (
         'driver' => 'local',
         'root' => 'D:\\laravel\\hotelnsn\\storage\\app/public',
-        'url' => 'https://dinhukhabar.com//storage',
+        'url' => 'http://127.0.0.1/storage',
         'visibility' => 'public',
       ),
       's3' => 
