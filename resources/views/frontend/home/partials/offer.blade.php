@@ -4,7 +4,7 @@
 
         <div class="nsn-search-history">
             <a href="#">
-                <img height="100" width="100" data-src="{{ asset('uploads/'.$image2) }}" alt="offer image" class="img-fluid img_height  lazy" >
+                <img height="100" width="100" data-src="{{ getImageUrl($image2) }}" alt="offer image" class="img-fluid img_height  lazy" >
 
                 </p>
                 {{-- <p class="text-secondary">
@@ -19,7 +19,7 @@
 
         <div class="nsn-search-history">
             <a href="#">
-                <img height="100" width="100" data-src="{{ asset('uploads/'.$image3) }}" alt="offer image" class="img-fluid img_height lazy" >
+                <img height="100" width="100" data-src="{{ getImageUrl($image3) }}" alt="offer image" class="img-fluid img_height lazy" >
 
                 </p>
             </a>
@@ -28,7 +28,7 @@
 
         <div class="nsn-search-history">
             <a href="#">
-                <img height="100" width="100" data-src="{{ asset('uploads/'.$image4) }}" alt="offer image" class="img-fluid img_height lazy" >
+                <img height="100" width="100" data-src="{{ getImageUrl($image4) }}" alt="offer image" class="img-fluid img_height lazy" >
 
                 </p>
             </a>
