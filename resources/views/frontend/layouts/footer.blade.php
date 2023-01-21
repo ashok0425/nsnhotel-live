@@ -35,7 +35,7 @@
                 <div class="mb-2 custom-text-white custom-fw-800 custom-fs-18 mb-3">Contact us</div>
                 <ul class="">
                     <li class="my-2"><i class="fas fa-envelope custom-text-white"></i> <a href="mailto:admin@nsnhotels.com" class="custom-text-white">admin@nsnhotels.com</a></li>
-                    <li class="my-2"><i class="fas fa-envelope custom-text-white"></i> <a href="mailto:sales@nsnhotels.com" class="custom-text-white">sales@nsnhotels.com</a></li>
+                    <li class="my-2"><i class="fas fa-envelope custom-text-white"></i> <a href="mailto:sales@nsnhotels.com" class="custom-text-white">amit@nsnhotels.com</a></li>
                     <li class="my-2"><i class="fas fa-phone custom-text-white"></i> <a href="tel:(+91)9958277997" class="custom-text-white">(+91) 99582 77997</a></li>
                     <li class="my-2"><i class="fas fa-phone custom-text-white"></i> <a href="tel:(+91)7683003096" class="custom-text-white">(+91) 8585852954</a></li>
                 </ul>
