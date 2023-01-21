@@ -181,12 +181,7 @@ img{
                                                     <h3>{{$post->title}}</h3>
                                                 </div>
                                                  {!! $post->content !!}
-                                                <div class="post-author"><a href="#"><img src="images/avatar/4.jpg" alt=""><span>
-                                                    
-                                                @if (isset($post['user']['name']))
-                                                {{__('by')}} , {{$post['user']['name']}}</span>
-                                                @endif
-                                                </a></div>
+                                                
                                                 <div class="post-opt">
                                                         <i class="fa fa-calendar"></i>  <span>{{formatDate($post->created_at, 'd M Y')}}</span>
                                                         @foreach($post['categories'] as $cat)

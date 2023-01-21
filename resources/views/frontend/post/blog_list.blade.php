@@ -26,7 +26,10 @@ $blog_title_bg = "style='background-image:url(/assets/images/img-bg-blog.png)'";
 				@foreach($posts as $post)
 				<div class="col-md-3 my-1">
 				<div class="nsnrecentstoriesbox">
+				<a href="{{route('post_detail', [$post->slug, $post->id])}}">
+
 					<img data-src="{{getImageUrl($post->thumb)}}" class="img-fluid lazy" alt="{{$post->title}}"  />
+				</a>
 					<div class="nsnrecentstoriesboxcontent">
 						<div class="nsndatestamp">{{ date('M j, Y', strtotime($post->created_at)) }}</div>
 						<ul>

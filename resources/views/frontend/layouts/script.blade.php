@@ -12,7 +12,7 @@
 <script src="{{filepath('frontend/jss/daterangepicker.js')}}"></script>
 <script type="text/javascript" src="{{filepath('frontend/jss/plugins.js')}}"></script>
 <script type="text/javascript" src="{{filepath('frontend/jss/scripts.js')}}"></script>
- <script type="text/javascript" src="{{filepath('frontend/js/custom.js')}}"></script>
+ <script type="text/javascript" src="{{filepath('frontend/jss/custom.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{setting('goolge_map_api_key', 'AIzaSyBkYZ3pUwM6uOXwg9FrVfcbxXG_GmY0lrs')}}&callback=initAutocomplete&libraries=places&language={{\Illuminate\Support\Facades\App::getLocale()}}"></script>
 <script type="text/javascript" src="{{filepath('frontend/jss/map-single.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

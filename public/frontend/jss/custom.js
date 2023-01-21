@@ -635,8 +635,7 @@ let area='';
                     $('#lat').val(lat)
                     $('#lng').val(lng)
                 }else{
-                    if (hotel_id!=null) {
-                        console.log('first')
+                    if (hotel_id!=null && hotel_id!='') {
                         location.href=app_url+'/hotels/'+hotel_id;
                     $('#hotel_id').val(hotel_id).attr('name', 'hotel');
 
