@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="{{ filepath('frontend/splide.css') }}">
     <link rel="stylesheet" href="{{ filepath('frontend/jquery.lightbox.css') }}">
     <style>
+        .lightbox__nav--prev{
+            background: url("{{asset('previous.png')}}")!important
+        }
+
+        .lightbox__nav--next{
+            background: url("{{asset('next.png')}}")!important
+        }
         .banquet_contact input,
         .banquet_contact select,
         .banquet_contact textarea {
@@ -193,21 +200,7 @@
                                                 </span>
 
                                             </a>
-                                        @else
-                                            <a href="{{ filepath('frontend/roomimage.jpeg') }}">
-                                                <img src="{{ filepath('frontend/roomimage.jpeg') }}" alt="{{ $place->name }}etewtr"
-                                                    class="img-fluid">
-
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13"
-                                                        viewBox="0 0 16 13">
-                                                        <path fill="white" fill-rule="evenodd"
-                                                            d="M1.016.467h14.48c.267 0 .483.207.483.463v10.978c0 .256-.216.678-.483.678H1.016c-.266 0-.483-.422-.483-.678V.93c0-.256.217-.463.483-.463zm.483 8.984v2.142h9.025L5.183 6.096a.404.404 0 00-.295-.128.403.403 0 00-.291.135L1.499 9.45zm9.653-2.494c-1.065 0-1.93-.832-1.93-1.855 0-1.022.865-1.854 1.93-1.854s1.931.832 1.931 1.854c0 1.023-.866 1.855-1.93 1.855zm0-2.782c-.532 0-.965.417-.965.927 0 .511.433.928.965.928s.966-.417.966-.928c0-.51-.434-.927-.966-.927zm3.862 7.418v-10.2H1.499v6.662l2.376-2.568a1.374 1.374 0 011.001-.446c.385-.004.744.146 1.013.423l5.955 6.129h3.17z">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-
-                                            </a>
+                                     
                                         @endif
 
                                         @if ($item->gallery)
