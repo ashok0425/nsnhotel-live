@@ -80,6 +80,8 @@ class UserController extends Controller
                    <button type="button" class="btn btn-xs btn-primary " 
                    data-name="'.$row->name.'"
                    data-email="'.$row->email.'"
+                   data-id="'.$row->id.'"
+
                    data-phone_number="'.$row->phone_number.'"
                  
 
@@ -257,14 +259,17 @@ class UserController extends Controller
             $isagent = 1;
         }
         $data = $this->validate($request, $rule_factory);
-
         $model =  User::find($request->users_id);
         $model->name = $request->name;
         $model->email = $request->email;
         $model->phone_number = $request->phone_number;
         if ($request->password && $request->password!=null) {
             $model->password = Hash::make($request->password);
-
+        }
+        if ($request->hasFile('avatar')) {
+            $icon = $request->file('avatar');
+            $file_name = $this->uploadImage($icon, '');
+            $model->avatar = $file_name;
         }
          $model->is_partner = $ispartner;
         $model->is_agent = $isagent;

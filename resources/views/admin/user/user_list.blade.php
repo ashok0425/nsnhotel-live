@@ -204,7 +204,7 @@
            $('#preview_icon').attr('src',src);
            let action="{{route('admin_user_update')}}";
            $('#user_form').attr('action',action);
-           $('#users_id').val(data.id);
+           $('#users_id').val(data.data('id'));
            $('#submit_add_users').html('update');
         })
   
