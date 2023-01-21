@@ -24,6 +24,7 @@ class PostController extends Controller
         $posts = Post::query()
             ->with('categories')
             ->with('user')
+            ->orderBy('id','desc')
             ->where('type', Post::TYPE_BLOG)
             ->where('status', Post::STATUS_ACTIVE);
 
