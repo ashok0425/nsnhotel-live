@@ -25,7 +25,9 @@
                     </div>
                     <div class="row">
                        
-                        <div class="col-md-6"> 
+                        <div class="col-md-6 offset-md-3"> 
+                            <div class="card">
+                            <div class="card-body">
                         <table>
                             <tr>
                             <th class ="btn btn-primary">Room Price 1 person :<span style = color:black;>@if(isset($room->onepersonprice)) {{$room->onepersonprice}} @endif</span></th>  
@@ -92,6 +94,9 @@
                           
                         </form>
                     </div>
+                </div>
+            </div>
+
                 </div>
             </div>
 @stop

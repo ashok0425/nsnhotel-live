@@ -139,7 +139,7 @@ curl_close($curl);
 return $response;
 }
 
-public function whatsapp_booking($phone,$name,$id,$data,$map){
+public function whatsapp_booking($phone,$name,$id,$data,$map=null){
     $curl = curl_init();
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',

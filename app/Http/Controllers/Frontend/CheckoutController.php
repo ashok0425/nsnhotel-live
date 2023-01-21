@@ -217,7 +217,7 @@ $price=$final_adult_price;
             'phone_number' => '',
             'message' => '',
             'type' => '',
-            '$number_of_room' => '',
+            'number_of_room' => '',
             'payment_type' => '',
             'amount'    =>  '',
             'discountPrice' => '',
@@ -267,7 +267,14 @@ $price=$final_adult_price;
         //     });
         //     }
         }
-
+        $diff=Carbon::parse($start_date)->diffInDays(Carbon::parse($end_date));
+        // $ph=substr($phone,1);
+        $data="Hotel Name:$place->name, Check-in Date:$start_date 12pm onwards, Check-out Date:$end_date 11 am, Number of Rooms:$request->number_of_room, Number of Nights:1, Number of Adult:-$request->numbber_of_adult, Number of Childres:-$request->numbber_of_children, Booking Amount:$booking->amount, Hotel Address:$place->address";
+        $map='map';
+        $this->whatsapp_review($request->phone_code.$phone, $request->first_name);
+               $res= $this->whatsapp_booking($request->phone_code.$phone,$request->first_name,$booking->booking_id,$data,$map);
+                $this->whatsapp_booking('91'.$place_email->phone_number,$place->first_name,$booking->id,$data,$map);
+                $this->whatsapp_booking('919958277997',$request->first_name,$booking->id,$data,$map); 
           $razorpay = new RazorpayController;
           return $razorpay->payWithRazorpay($request);
         }
@@ -302,7 +309,7 @@ $price=$final_adult_price;
             'amount'    =>  '',
             'discountPrice' => '',
             'TotalPrice' => '',
-            '$number_of_room' => '',
+            'number_of_room' => '',
             'booking_type'=>'',
             'booking_from'=>''
         ]);
@@ -342,8 +349,10 @@ $price=$final_adult_price;
         $this->sendBookingMsg($phone,$place->name,$start_date,$end_date,$numberofadult,$booking->amount,$place->address,$booking->payment_type,$request->$number_of_room);
         $this->sendBookingMsg($place_email->phone_number,$place->name,$start_date,$end_date,$numberofadult,$booking->amount,$place->address,$booking->payment_type,$request->$number_of_room);
         $this->sendBookingMsg('9958277997',$place->name,$start_date,$end_date,$numberofadult,$booking->amount,$place->address,$booking->payment_type,$request->$number_of_room);
+
+        $diff=Carbon::parse($start_date)->diffInDays(Carbon::parse($end_date));
 // $ph=substr($phone,1);
-$data="Hotel Name:$place->name, Check-in Date:$start_date 12pm onwards, Check-out Date:$end_date 11 am, Number of Rooms:1, Number of Nights:1, Number of Guests:-$numberofadult, Booking Amount:$booking->amount, Hotel Address:$place->address";
+$data="Hotel Name:$place->name, Check-in Date:$start_date 12pm onwards, Check-out Date:$end_date 11 am, Number of Rooms:$request->number_of_room, Number of Nights:1, Number of Adult:-$request->numbber_of_adult, Number of Childres:-$request->numbber_of_children, Booking Amount:$booking->amount, Hotel Address:$place->address";
 $map='map';
 $this->whatsapp_review($request->phone_code.$phone, $request->first_name);
        $res= $this->whatsapp_booking($request->phone_code.$phone,$request->first_name,$booking->booking_id,$data,$map);

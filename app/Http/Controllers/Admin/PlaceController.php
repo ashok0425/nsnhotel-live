@@ -192,7 +192,9 @@ class PlaceController extends Controller
         
 
         ->addColumn('action',function($row){
-             
+          if( auth()->user()->isAgent()){
+            $html="N/A";
+          }else{
           $html='<a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_edit_view', $row->id).'">Edit</a>
           <a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_add_rooms', $row->id).'">Add Booking</a>
           <a class="btn  btn-xs btn-primary place_edit" href="'.route('admin_room_list',['hotel_id'=>$row->id]).'">Manage Rooms</a>
@@ -204,7 +206,7 @@ class PlaceController extends Controller
           if($row->status === \App\Models\Place::STATUS_PENDING){
           $html.='<button type="button" class="btn  btn-xs btn-success place_approve" data-id="'.$row->id.'">Approve</button>';
           }
-          
+        }
         
 
             return $html;
@@ -277,6 +279,8 @@ class PlaceController extends Controller
         $amenities = $this->amenities->getListAll();
         if(isset($request['place_id'])){
          $users = User::where('phone_number',$request->phone)->first() ;
+         $partner = User::where('id',$place->user_id)->first() ;
+
          if($users){
             $person = $users->id; 
          }else{
@@ -331,79 +335,31 @@ $address=$place->address;
 $name=$place->name;
 $adult=$request['adult'];
 $no_of_room=$request['rooms'];
+$no_of_child=$request['children'];
+
 $from  = Carbon::createFromFormat('Y-m-d', trim($checkin));
 $to = Carbon::createFromFormat('Y-m-d', trim($checkout));
 
 $number_of_night = $from->diffInDays($to);
        
 
-$data="Hotel Name:$name, Check-in Date:$checkin 12pm onwards, Check-out Date:$checkout 11 am, Number of Rooms:$room, Number of Nights:$number_of_night, Number of Adult:-$adult, Number of Children:$no_of_room, Booking Amount:$amount, Hotel Address:$address";
+$data="Hotel Name:$name, Check-in Date:$checkin 12pm onwards, Check-out Date:$checkout 11 am, Number of Rooms:$no_of_room, Number of Nights:$number_of_night, Number of Adult:-$adult, Number of Children:$no_of_child, Booking Amount:$amount, Hotel Address:$address";
 $map='map';
 $this->whatsapp_review('977'.$request['phone'], $request->name);
+$this->whatsapp_review('91'.$request['phone'], $request->name);
 
-        $this->whatsapp_booking('977'.$request['phone'],$place->name,$newBooking->id,$data,$map);
-        $this->whatsapp_booking('91'.$request['phone'],$place->name,$newBooking->id,$data,$map);
-        $this->whatsapp_booking('91'.$place_email->phone_number,$place->name,$booking->id,$data,$map);
-        $this->whatsapp_booking('919958277997',$place->name,$newBooking->id,$data,$map); 
 
-                            // exit;
+        $this->whatsapp_booking('977'.$request['phone'],$request->name,$newBooking->id,$data);
+        $this->whatsapp_booking('91'.$request['phone'],$request->name,$newBooking->id,$data);
+        $this->whatsapp_booking('91'.$partner->phone_number,$place->name,$newBooking->id,$data);
+        $this->whatsapp_booking('919958277997',$place->name,$newBooking->id,$data); 
+        $this->sendBookingMsg($request['phone'],$place->name,$checkin,$checkout,$adult,$amount,$place->address,$newBooking->payment_type);
+        return redirect(route('admin_booking_list'))->with('success', ' Hotel Booking Update  successFully!');
                             
         }
-         $segment = req::segment(3);
  
 
  
-        if($segment == 'book'){
-              $book = req::segment(4);
-            // $Bookings =  Booking::find($book);
-             $Bookings = Booking::with('user')->where('id', $book)->first();
-            if(isset($request->book)){
-            //  $book =Request::segment(4);
-              $newBooking =  Booking::find($book);   
-  $newBooking->booking_start = $request['check_in'];
-  
-                    $newBooking->booking_end = $request['check_out'];
-                    $newBooking->amount = $request['amount']; 
-                    $newBooking->number_of_room = $request['rooms']; 
-                    $newBooking->numbber_of_adult = $request['adult']; 
-                      $newBooking->final_amount = $request['price'];
-                        $newBooking->TotalPrice = $request['price'];
-                        $newBooking->amount = $request['price'];
-                        $newBooking->payment_type = $request['payment_type'];
-                       $newBooking->is_paid  = 0;
-                        $newBooking->booked_by  = Auth::user()->id;
-                    $newBooking->status  = '2';
-                  
-                     $newBooking->save();
-// $this->sendBookingMsge($data['mobile'],$hName['name'],$data['booking_start_date'],$data['booking_end_date'],$data['list_of_guest'],$data['amount']/100,$hName['name'],'confirm');
-$this->sendBookingMsg($request['phone'],$place->name,$request['check_in'],$request['check_out'],$request['adult'],$request['price'],$place->address,$request['payment_type']);
-$phone_number = "9958277997";
-$this->sendBookingMsg($phone_number,$place->name,$request['check_in'],$request['check_out'],$request['adult'],$request['price'],$place->address,$request['payment_type']);
-
-$checkout=$request['check_out'];
-$checkin=$request['check_in'];
-$amount=$request['price'];
-$address=$place->address;
-$name=$place->name;
-$adult=$request['adult'];
-
-
-
-
-$data="Hotel Name:$name, Check-in Date:$checkin 12pm onwards, Check-out Date:$checkout 11 am, Number of Rooms:1, Number of Nights:1, Number of Adult:-$adult, Number of Children:-1, Booking Amount:$amount, Hotel Address:$address";
-$map='map';
-
-$this->whatsapp_review('977'.$request['phone'], $request->name);
-
-        $this->whatsapp_booking('977'.$request['phone'],$place->name,$newBooking->id,$data,$map);
-        $this->whatsapp_booking('91'.$request['phone'],$place->name,$newBooking->id,$data,$map);
-        // $this->whatsapp_booking('91'.$place_email->phone_number,$place->name,$booking->id,$data,$map);
-        $this->whatsapp_booking('919958277997',$place->name,$newBooking->id,$data,$map); 
-
-                    //  $this->sendBookingMsg($phone,$place->name,$start_date,$end_date,$numberofadult,$booking['amount'],$place->address,$booking->payment_type);
-                    //  return redirect(route('admin_booking_list'))->with('success', ' Hotel Booking Update  successFully!');
-            }
-        }
       
         return view('admin.place.room_create', compact('countries', 'cities', 'categories', 'place_types', 'amenities', 'place' ,'users','Bookings','room'));
     }
