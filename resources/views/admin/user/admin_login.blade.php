@@ -24,7 +24,7 @@
                 <form action="{{ route('login') }}" class="login100-form validate-form" method="post" id="login_admin">
                     @csrf
                     <span class="login100-form-logo">
-                        <img src="{{asset('assets/images/logo_login.jpeg')}}" alt="logo_login.jpeg">
+                        <img src="{{getImageUrl(setting('logo'))}}" alt="logo_login.jpeg">
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
                         Log in
