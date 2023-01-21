@@ -131,6 +131,33 @@ class MealController extends Controller
            return back()->with('success' , 'Added Tax successfully!!');
         }
     }
+    public function editTax(Request $request,$id)
+    {
+$tax=Tax::find($id);
+return view('admin.meal.tax_add',compact('tax'));
+    }
+
+    public function taxupdate(Request $request)
+    {
+         $rule_factory = RuleFactory::make([
+                'price_min' => 'required',
+                'price_max' => '',
+                'percentage' => '',
+        ]);
+        $data = $this->validate($request ,$rule_factory);
+        if (! empty($request->tax_id)) {
+            $model = Tax::findOrFail($request->tax_id);
+            $model->fill($data)->save();
+            return back()->with('success' , 'Updated Tax successfully!!');
+        }else{
+          $model = new Tax();    
+          $model->fill($data)->save();
+           return back()->with('success' , 'Added Tax successfully!!');
+        }
+    }
+
+
+
 
      public function taxDestroy($id)
     {

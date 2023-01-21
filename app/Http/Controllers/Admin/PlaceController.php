@@ -57,10 +57,11 @@ class PlaceController extends Controller
     public function list(Request $request)
     {
        if($request->ajax()) {
+       
         $places=Place::join('place_translations','place_translations.place_id','places.id')->orderBy('id','desc')->select('places.*','place_translations.name as pname');
 
         if ($request->keyword) {
-        $places=$places->where('pname','LIKE',"%$request->keyword%")->orwhere('address','LIKE',"%$request->keyword%");
+        $places=$places->where('place_translations.name','LIKE',"%$request->keyword%")->orwhere('address','LIKE',"%$request->keyword%");
          
         }
 
@@ -170,7 +171,7 @@ class PlaceController extends Controller
             }
            elseif ($row['rooms']['onepersonprice']>1000
                 &&$row['rooms']['onepersonprice']<2500){
-                  $tax_amount=($row['rooms']['onepersonprice']*12)/100;
+                  $tax_amount=($row['rooms']['onepersonprice']*18)/100;
                   $html.=$row['rooms']['onepersonprice']+$tax_amount;
                   
                 }else

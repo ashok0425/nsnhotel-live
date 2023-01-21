@@ -244,6 +244,10 @@ Route::group([
 
     Route::get('/meal/tax-list', 'MealController@taxList')->name('tax_list');
     Route::post('/meal/tax-create', 'MealController@taxCreate')->name('tax_create');
+    Route::get('/tax-edit/{id}', 'MealController@editTax')->name('tax_edit');
+    Route::post('/tax-update', 'MealController@taxupdate')->name('tax_update');
+
+
     Route::delete('/meal/taxt/{id}', 'MealController@taxDestroy')->name('tax_destroy');
     Route::post('/meal/create-meal', 'MealController@createMeal')->name('create_meal');
 

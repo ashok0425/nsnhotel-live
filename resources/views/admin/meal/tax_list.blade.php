@@ -55,13 +55,10 @@
                                                          <td>{{$item->price_max}}</td>
                                                          <td>{{$item->percentage}}</td>
                                                         <td>
-                                                       <button type="button" class="btn btn-warning tax_edit"
-                                                       data-id="{{$item->id}}"
-                                                       data-price_min ="{{$item->price_min}}",
-                                                       data-price_max ="{{$item->price_max}}",
-                                                       data-percentage ="{{$item->percentage}}",
+                                                       <a type="button" class="btn btn-warning tax_edit"
+                                                          href="{{route('admin_tax_edit',['id'=>$item->id])}}"
                                                             >Edit
-                                                            </button>
+                                                            </a>
                                                             <form class="d-inline" action="{{route('admin_tax_destroy',$item->id)}}" method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
@@ -83,7 +80,7 @@
 @stop
 
 
-@include('admin.meal.tax_add')
+{{-- @include('admin.meal.tax_add') --}}
 @push('scripts')
      <script src="{{asset('admin/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
      <script src="{{asset('admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js')}}"></script>
