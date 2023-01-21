@@ -153,6 +153,14 @@
                     <input type="number" min="0" value="" name="discount_percent" class="form-control">
                 </div>
             </div>
+
+             <div class="col-md-6">
+                <div class="col-md-12 gallery">
+                    <p><strong>Gallery images:</strong></p>
+                    <div id="place_gallery_thumbs"></div>
+                </div>
+                    <input type="file" class="form-control" id="gallery" accept="image/*" multiple>
+            </div>
         </div>
 
        

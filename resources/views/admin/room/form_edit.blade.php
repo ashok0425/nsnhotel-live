@@ -175,6 +175,33 @@
                     <input type="number" min="0" value="{{$rooms->discount_percent}}" name="discount_percent" class="form-control">
                 </div>
             </div>
+
+            <div class="col-md-12 gallery">
+                <p><strong>Gallery images:</strong></p>
+                <div id="place_gallery_thumbs">
+                    @if($rooms->gallery)
+                        @foreach($rooms->gallery as $image)
+                            <div class="col-sm-2 media-thumb-wrap">
+                                <figure class="media-thumb">
+                                    <img src="{{getImageUrl($image)}}">
+                                    <div class="media-item-actions">
+                                        <a class="icon icon-delete" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16">
+                                                <g fill="#5D5D5D" fill-rule="nonzero">
+                                                    <path d="M14.964 2.32h-4.036V0H4.105v2.32H.07v1.387h1.37l.924 12.25H12.67l.925-12.25h1.369V2.319zm-9.471-.933H9.54v.932H5.493v-.932zm5.89 13.183H3.65L2.83 3.707h9.374l-.82 10.863z"></path>
+                                                    <path d="M6.961 6.076h1.11v6.126h-1.11zM4.834 6.076h1.11v6.126h-1.11zM9.089 6.076h1.11v6.126h-1.11z"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                        <input type="hidden" name="gallery[]" value="{{$image}}">
+                                        <span class="icon icon-loader d-none"><i class="fa fa-spinner fa-spin"></i></span>
+                                    </div>
+                                </figure>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
         </div>
 
     </div>

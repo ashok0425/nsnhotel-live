@@ -162,7 +162,6 @@ class PlaceController extends Controller
         })
 
         ->addColumn('price',function($row){
-          
           if(isset($row['rooms']['onepersonprice'])){
           $html='<p>';
             if ($row['rooms']['onepersonprice']<1000){

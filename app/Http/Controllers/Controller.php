@@ -34,7 +34,13 @@ class Controller extends BaseController
         $extension = $file->getClientOriginalExtension();
         $filename = uniqid(). time() . '.' . $extension;
         // $img=Image::make($file);
-        $file->storeAs('uploads/',$filename,'s3');
+        if (config()['app']['env']=='local') {
+          $img=Image::make($file);
+          $img->save("uploads/{$dir}$filename",$quality);
+        }else{
+          $file->storeAs('uploads/',$filename,'s3');
+
+        }
      return $filename;
 
     }

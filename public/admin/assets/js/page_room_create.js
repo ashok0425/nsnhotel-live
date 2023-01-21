@@ -70,7 +70,7 @@ $('#gallery').change(function (e) {
             }
         },
         error: function (xhr, status, error) {
-            alert('An error occurred!');
+            // alert('An error occurred!');
             // console.log(xhr.responseText);
         }
     });
