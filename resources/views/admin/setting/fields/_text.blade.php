@@ -2,7 +2,7 @@
     <label for="{{ $field['name'] }}">{{ $field['label'] }}</label>
     @if(isset($field['data']) && $field['data'] === "image")
         @if(\setting($field['name']))
-            <p><img src="{{ asset('uploads/' . \setting($field['name'])) }}" width="100px"></p>
+            <p><img src="{{ getImageUrl(setting($field['name'])) }}" width="100px"></p>
         @endif
     @endif
     <input type="{{ $field['type'] }}"

@@ -69,7 +69,7 @@ $banquet_places =Place::with(['categories', 'city','place_types', 'avgReview'])
  
 <div class="banquote-banners">
 <div class="banquote_image_wrapper">
-    <img src="{{asset('uploads/'.$offer_image1->val)}}" alt="" class="w-100 img-fluid" style="height: 94vh">
+    <img src="{{getImageUrl($offer_image1->val)}}" alt="" class="w-100 img-fluid" style="height: 94vh">
 </div>
 
 </div>
