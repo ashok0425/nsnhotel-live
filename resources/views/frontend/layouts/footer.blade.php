@@ -37,7 +37,7 @@
                     <li class="my-2"><i class="fas fa-envelope custom-text-white"></i> <a href="mailto:admin@nsnhotels.com" class="custom-text-white">admin@nsnhotels.com</a></li>
                     <li class="my-2"><i class="fas fa-envelope custom-text-white"></i> <a href="mailto:sales@nsnhotels.com" class="custom-text-white">sales@nsnhotels.com</a></li>
                     <li class="my-2"><i class="fas fa-phone custom-text-white"></i> <a href="tel:(+91)9958277997" class="custom-text-white">(+91) 99582 77997</a></li>
-                    <li class="my-2"><i class="fas fa-phone custom-text-white"></i> <a href="tel:(+91)7683003096" class="custom-text-white">(+91) 76830 03096</a></li>
+                    <li class="my-2"><i class="fas fa-phone custom-text-white"></i> <a href="tel:(+91)7683003096" class="custom-text-white">(+91) 8585852954</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-3 col-md-3">

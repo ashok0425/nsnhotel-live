@@ -147,7 +147,7 @@ class PlaceController extends Controller
 
         ->editColumn('status',function($row){
           if( auth()->user()->isAgent()){
-            $html='<a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_add_rooms', $row->id).'">Add Booking</a><a class="btn  btn-xs btn-primary place_edit" href="'.route('admin_room_list',['hotel_id'=>$row->id]).'">{{__("Manage Rooms")}}</a>';
+            $html='<a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_add_rooms', $row->id).'">Add Booking</a>';
           }else{
            if($row->status === \App\Models\Place::STATUS_PENDING){
             $html=STATUS[$row->status];
