@@ -190,6 +190,8 @@ class Place extends Model  implements TranslatableContract
             ->with($with)
             ->withCount('wishList')
             ->where('slug', $slug)
+            ->orwhere('id', $slug)
+
             ->first();
     }
     

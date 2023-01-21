@@ -586,8 +586,8 @@ let area='';
                     name=value.slug
                    }
 
-                        html += `<li class="my-1 pb-1">
-                                    <a href="#" data-city_id="${value.city_id}" data-hotel_id="${value.hotel_id}" data-area="${area}" class="my-0 py-0">
+                        html += `<li class="my-1 pb-1" data-city_id="${value.city_id}" data-hotel_id="${value.hotel_id}" data-area="${area}">
+                                    <a href="#"  class="my-0 py-0">
                                     <span>
                                     ${name}</span>
                                     <a class="my-0 py-0 custom-fs-12 text-capitilize"><small>${value.slug}</small>
@@ -621,12 +621,11 @@ let area='';
         },
 
         clickItemLocation: function () {
-            $(document).on('click', '.search-result a', function (e) {
+            $(document).on('click', '.search-result li', function (e) {
                 e.preventDefault();
                 let city_id = e.currentTarget.getAttribute('data-city_id');
                 let hotel_id = e.currentTarget.getAttribute('data-hotel_id');
                 let area = e.currentTarget.getAttribute('data-area');
-              console.log(city_id,hotel_id,area)
             
                 if (area && area!=null && area!=undefined && area!='') {
                    
@@ -636,8 +635,13 @@ let area='';
                     $('#lat').val(lat)
                     $('#lng').val(lng)
                 }else{
-                    $('#city').val(city_id);
+                    if (hotel_id!=null) {
+                        console.log('first')
+                        location.href=app_url+'/hotels/'+hotel_id;
                     $('#hotel_id').val(hotel_id).attr('name', 'hotel');
+
+                    } 
+                    $('#city').val(city_id);
                 }
             
                 

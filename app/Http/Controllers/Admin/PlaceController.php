@@ -57,10 +57,10 @@ class PlaceController extends Controller
     public function list(Request $request)
     {
        if($request->ajax()) {
-        $places=Place::orderBy('id','desc')->select('*');
+        $places=Place::join('place_translations','place_translations.place_id','places.id')->orderBy('id','desc')->select('places.*','place_translations.name as pname');
 
         if ($request->keyword) {
-        $places=$places->where('slug','LIKE',"%$request->keyword%");
+        $places=$places->where('pname','LIKE',"%$request->keyword%")->orwhere('address','LIKE',"%$request->keyword%");
          
         }
 
@@ -99,14 +99,18 @@ class PlaceController extends Controller
 })
 
 ->addColumn('city',function($row){
-  $html= '<p class="py-0 my-0">'.$row->city->name.'</p>';
+  $html='';
+  if (isset($row->city)) {
+    $html.= '<p class="py-0 my-0">'.$row->city->name.'</p>';
+
+  }
 
   return $html;
 
 })
 
 ->addColumn('name',function($row){
-  if(isset($row['user'])){
+  if(isset($row['user'])&&isset($row['user']['name'])){
         return  ' <p class="py-0 my-0">' . $row['user']['name'] . '</p>';
   }
   else{
