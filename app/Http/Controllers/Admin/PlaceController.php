@@ -111,7 +111,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('name',function($row){
-  if(isset($row['user'])&&isset($row['user']['name'])){
+  if(isset($row['user'])&&  Auth::user()->is_admin==1){
         return  ' <p class="py-0 my-0">' . $row['user']['name'] . '</p>';
   }
   else{
@@ -121,7 +121,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('phone',function($row){
-  if(isset($row['user'])){
+  if(isset($row['user'])&&  Auth::user()->is_admin==1){
         return  ' <p class="py-0 my-0"><a href="tel:' . $row['user']['phone_number'] . '">' . $row['user']['phone_number'] . '</p>';
   }
   else{
@@ -131,7 +131,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('email',function($row){
-  if(isset($row['user'])){
+  if(isset($row['user'])&&  Auth::user()->is_admin==1){
         return  '<a href="email:' . $row['user']['email'] . '">' . $row['user']['email'] . '</p>';
   }
   else{
@@ -147,7 +147,11 @@ class PlaceController extends Controller
 
         ->editColumn('status',function($row){
           if( auth()->user()->isAgent()){
-            $html='<a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_add_rooms', $row->id).'">Add Booking</a><a class="btn  btn-xs btn-primary place_edit" href="'.route('admin_room_list',['hotel_id'=>$row->id]).'">Manage Rooms</a>';
+            $html='<a class="btn  btn-xs btn-warning place_edit" href="'.route('admin_place_add_rooms', $row->id).'">Add Booking</a>';
+            if (Auth::user()->pre_agent==1) {
+$html.='<a class="btn  btn-xs btn-primary place_edit" href="'.route('admin_room_list',['hotel_id'=>$row->id]).'">Manage Rooms</a>';
+            }
+            
           }else{
            if($row->status === \App\Models\Place::STATUS_PENDING){
             $html=STATUS[$row->status];

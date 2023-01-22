@@ -134,6 +134,7 @@ class UserController extends Controller
         $model->password = Hash::make($data['password']);
         $model->is_partner = $ispartner;
         $model->is_agent = $isagent;
+        $model->pre_agent = 0;
         $model->save();
         return back()->with('success', 'Add user success!');
     }
@@ -217,6 +218,8 @@ class UserController extends Controller
         $model->password = Hash::make($request->password);
          $model->is_partner = $ispartner;
         $model->is_agent = $isagent;
+        $model->pre_agent = 0;
+
         $model->save();
 
         return back()->with('success', 'Add user success!');
