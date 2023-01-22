@@ -23,8 +23,12 @@ class CheckoutController extends Controller
 
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request) {
-             
+            //  dd($request->all());
+if($request->booking_type=='hourlyprice'){
+$request['booking_start']=today();
+$request['booking_end']=today();
 
+}
         if ($request->payment_type != null) {
             $room=Room::find($request->room_id);
             if(!$room){
