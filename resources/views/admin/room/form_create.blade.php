@@ -83,7 +83,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>One Person Price <span class="text-danger">*</span></label>
-                     <input type="number" value="" placeholder="One Person Price" name="onepersonprice" class="form-control" required="">
+                     <input type="number" value="" placeholder="One Person Price" id="onepersonprice" name="onepersonprice" class="form-control" required="">
                    
                 </div>
             </div>
@@ -92,14 +92,14 @@
              <div class="col-md-4">
                 <div class="form-group">
                     <label>Two person Price </label>
-                     <input type="number" value=""  placeholder="Two person Price" name="twopersonprice" class="form-control">
+                     <input type="number" value=""  placeholder="Two person Price" name="twopersonprice" class="form-control" id="twopersonprice">
                    
                 </div>
             </div>
              <div class="col-md-4">
                 <div class="form-group">
                     <label>Three Person Price </label>
-                     <input type="number" value=""  placeholder="Number" name="threepersonprice" class="form-control">
+                     <input type="number" value=""  placeholder="Number" name="threepersonprice" class="form-control" id="threepersonprice">
                    
                 </div>
             </div>

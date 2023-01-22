@@ -105,7 +105,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>One Person Price <span class="text-danger">*</span></label>
-                     <input type="number" value="{{$rooms->onepersonprice}}" placeholder="One Person Price" name="onepersonprice" class="form-control" required="">
+                     <input type="number" value="{{$rooms->onepersonprice}}" placeholder="One Person Price" name="onepersonprice" class="form-control" id="onepersonprice" required="">
                    
                 </div>
             </div> 
@@ -114,23 +114,23 @@
              <div class="col-md-4">
                 <div class="form-group">
                     <label>Two person Price </label>
-                     <input type="number" value="{{$rooms->twopersonprice}}"  placeholder="Two person Price" name="twopersonprice" class="form-control">
+                     <input type="number" value="{{$rooms->twopersonprice}}"  placeholder="Two person Price" name="twopersonprice" class="form-control" id="twopersonprice">
                    
                 </div>
             </div>
              <div class="col-md-4">
                 <div class="form-group">
                     <label>Three Person Price </label>
-                     <input type="number" value="{{$rooms->threepersonprice}}"  placeholder="Number" name="threepersonprice" class="form-control">
+                     <input type="number" value="{{$rooms->threepersonprice}}"  placeholder="Number" name="threepersonprice" class="form-control" id="threepersonprice">
                    
                 </div>
             </div>
-             <div class="col-md-4">
+             {{-- <div class="col-md-4">
                 <div class="form-group">
                     <label>Four Person Price </label>
                      <input type="number" value="{{$rooms->fourpersonprice}}"  placeholder="Number" name="fourpersonprice" class="form-control">
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">

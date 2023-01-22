@@ -54,8 +54,24 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="" id="two" value="{{setting('twopersonprice')}}">
+            <input type="hidden" name="" id="three" value="{{setting('threepersonprice')}}">
+
 @stop
 @push('scripts')
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <script src="{{asset('admin/assets/js/page_room_create.js')}}"></script>
+ <script>
+    $(document).on('keyup','#onepersonprice',function(){
+let two=parseInt($('#two').val());
+let three=parseInt($('#three').val());
+let value=parseInt($(this).val());
+if (value!=0||value!='') {
+    $('#twopersonprice').val(two+value)
+        $('#threepersonprice').val(three+value)
+}
+       
+
+    })
+ </script>
 @endpush
