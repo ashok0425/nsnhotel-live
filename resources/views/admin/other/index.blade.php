@@ -29,7 +29,7 @@
                         <div class="col-md-12"> 
                             <div class="card card-topline-aqua">
                                 <div class="card-head">
-                                    <header>Taxs</header>
+                                    <header></header>
                                     <div class="tools">
                                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>

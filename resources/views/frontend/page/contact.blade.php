@@ -35,18 +35,18 @@
 							    @method('post')
                                 @csrf
 								<div class="form-group  ">
-									<input type="text" value="" name="" id="name" placeholder="Full Name *" class="form-control" />
+									<input type="text" value="" name="name" id="name" placeholder="Full Name *" class="form-control" required/>
 								</div>
 								<input type="hidden" value="2" name="type"  class="form-control" />
 							
 								<div class="form-group  ">
-									<input type="email" value="" name="email" id="" placeholder="Email *" class="form-control" />
+									<input type="email" value="" name="email" id="" placeholder="Email *" class="form-control"required />
 								</div>
 								<div class="form-group  ">
-									<input type="tel" value="" name="phone_number" id="" placeholder="Phone Number *" class="form-control" />
+									<input type="tel" value="" name="phone" id="" placeholder="Phone Number *" class="form-control"required />
 								</div>
 								<div class="form-group  ">
-									<textarea class="form-control textareainput" name="note" id="note" placeholder="Message"></textarea>
+									<textarea class="form-control textareainput" name="message" id="note" placeholder="Message" required></textarea>
 								</div>
 								<div class="form-group">
 									<button type="submit" class="btn contactbtn" id="submit">Send Message</button>
