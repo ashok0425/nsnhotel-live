@@ -209,7 +209,7 @@ $banquet_places =Place::with(['categories', 'city','place_types', 'avgReview'])
             </div>
         </div>
         
-        <input type="hidden" name="type" value="0">
+        <input type="hidden" name="type" value="3">
 
         <div class="col-md-6">
             <div class="form-group">

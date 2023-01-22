@@ -173,7 +173,21 @@ class HomeController extends Controller
     
 
     public function sendContact(Request $request){
-        return back()->with('success', 'Thanks for contacting us.  Our team will get in touch with you soon!');
+        $model = new Subscribe();
+        $model->email=$request->email;
+        $model->phone=$request->phone;
+        $model->event=$request->event;
+        $model->type=2;
+        $model->name=$request->name;
+        $model->message=$request->message;
+
+        $model->save();
+        $notification=array(
+            'alert-type'=>'success',
+            'messege'=>'Thanks for contacting us.We will get back to you as soon as possible.',
+             
+         );
+        return back()->with($notification);
     }
 
 
@@ -187,8 +201,10 @@ class HomeController extends Controller
             $model->email=$request->email;
             $model->phone=$request->phone;
             $model->event=$request->event;
-            $model->type=$request->type;
+            $model->type=$request->type?$request->type:1;
             $model->name=$request->name;
+            $model->message=$request->message;
+
             $model->save();
             if($request->type==0){
                 $notification=array(

@@ -11,11 +11,18 @@ use App\Models\Review;
 use App\Models\User;
 use App\Models\Visitor;
 use App\Models\Room;
+use App\Models\Subscribe;
 use Carbon\Carbon;
 
 
 class DashboardController extends Controller
 {
+    public function other($id)
+    {
+$other=Subscribe::where('type',$id)->orderBy('id','desc')->get();
+$data=$id;
+return view('admin.other.index',compact('other','data'));
+    }
     public function index()
     {
         $count_cities = City::query()

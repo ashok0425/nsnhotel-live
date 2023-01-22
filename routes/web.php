@@ -139,6 +139,8 @@ Route::group([
     'middleware' => ['auth', 'auth.admin']], function () use ($router) {
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/other/{id}', 'DashboardController@other')->name('other');
+
 
     Route::get('/state', 'StateController@list')->name('state_list');
     Route::post('/store-review', 'PlaceController@storereview')->name('store_review');

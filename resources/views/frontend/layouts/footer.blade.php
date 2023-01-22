@@ -70,16 +70,17 @@
         </div>
         <div class="nsnhotelsfooterbottom mt-2">
             <div class="row">
-                <div class="col-12 col-sm-4 col-md-4 custom-text-white">
+                <div class="col-12 col-sm-3 col-md-3 custom-text-white">
                     <p>© {{now()->year}}, All rights reserved.</p>
                 </div>
                 <div class="col-12 col-sm-4 col-md-4 text-center custom-text-white">
                     <p>NSN Hotels Made with <span class="fas fa-heart text-danger"></span> by <a href="https://nsnhotels.com" target="_blank" class="custom-text-white custom-fw-800">Nsn.</a></p>
                 </div>
-                <div class="col-12 col-sm-4 col-md-4">
+                <div class="col-12 col-sm-5 col-md-5">
                     <ul class=" d-flex justify-content-between">
                         <li><a href="https://nsnhotels.com/assets/doc/Cancellation-and-Reservation.pdf" class="custom-text-white custom-fs-16">Cancellation Policy</a></li>
                         <li><a href="{{url('post/privacy-policy-16')}}" class="custom-text-white custom-fs-16">Privacy Policy</a></li>
+                        <li><a href="{{route('page_contact')}}" class="custom-text-white custom-fs-16">Contact us</a></li>
                         <li><a href="{{route('post_list_all')}}" class="custom-text-white custom-fs-16">Blog</a></li>
                     </ul>
                 </div>

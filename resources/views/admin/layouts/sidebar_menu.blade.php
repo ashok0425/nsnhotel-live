@@ -169,6 +169,20 @@
 			                    </ul>
 							</li>
 
+
+							<li class="nav-item">
+								<a href="" class="nav-link nav-toggle">
+									<i class="fa fa-briefcase"></i>
+									<span class="title">miscellaneous</span>
+									<span class="arrow"></span>
+
+								</a>
+								<ul class="sub-menu">
+			                        <li class="nav-item"><a href="{{route('admin_other',['id'=>1])}}" class="nav-link"><i class="fa fa-cogs"></i> Subscriber</a></li>
+									<li class="nav-item"><a href="{{route('admin_other',['id'=>3])}}" class="nav-link"><i class="fa fa-cogs"></i> Banquet Contact</a></li>  <li class="nav-item"><a href="{{route('admin_other',['id'=>2])}}" class="nav-link"><i class="fa fa-cogs"></i> Contact List</a></li>
+			                    </ul>
+							</li>
+
 							@endif
 						</ul>
 					</div>
