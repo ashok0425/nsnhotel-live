@@ -50,12 +50,25 @@
                                                                 @foreach($fields['elements'] as $field)
                                                                     @includeIf('admin.setting.fields.' . $field['type'] )
                                                                 @endforeach
+
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                          @endforeach
+                                         <div class="form-group">
+                                            <label for="">Two Person Price Should Increased by Amount</label>
+                                        <input type="text" class="form-control" name="twopersonprice" value="{{setting('twopersonprice')}}">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Three Person Price Should Increased by Amount</label>
+                                        <input type="text" class="form-control" name="threepersonprice" value="{{setting('threepersonprice')}}">
+
+                                        </div>
                                         @endif
                                         <div class="row m-b-md">
                                             <div class="col-md-12">

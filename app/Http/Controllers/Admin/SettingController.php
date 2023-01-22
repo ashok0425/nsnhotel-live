@@ -18,13 +18,8 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-        $rules = Setting::getValidationRules();
-        $data = $this->validate($request, $rules);
-
-        $validSettings = array_keys($rules);
-
-        foreach ($data as $key => $val) {
-            if (in_array($key, $validSettings)) {
+      
+        foreach ($request->all() as $key => $val) {
 
                 if (Setting::getDataType($key) === "image") {
                     $file = $request->file($key);
@@ -33,7 +28,6 @@ class SettingController extends Controller
                 }
 
                 Setting::add($key, $val, Setting::getDataType($key));
-            }
         }
 
         return back()->with('success', 'Settings has been saved.');
