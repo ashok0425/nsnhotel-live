@@ -173,7 +173,6 @@ class HomeController extends Controller
     
 
     public function sendContact(Request $request){
-        dd($request->all());
         $model = new Subscribe();
         $model->email=$request->email;
         $model->phone=$request->phone;

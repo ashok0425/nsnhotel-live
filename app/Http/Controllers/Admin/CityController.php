@@ -9,6 +9,8 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Faq;
 use App\Models\Location;
+use App\Models\Place;
+use App\Models\Room;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 
@@ -279,6 +281,40 @@ class CityController extends Controller
     }
 
 
+public function ModifyPrice(Request $request){
+    $request['city_id']=36;
+    $places=Place::join('rooms','rooms.hotel_id','places.id')->where('city_id',$request->city_id)->select('rooms.*')->get();
+
+    foreach ($places as $key => $value) {
+
+        $place=Room::find($value->id);
+        $onep=($place->onepersonprice*$request->percent)/100;
+        $twop=($place->twopersonprice*$request->percent)/100;
+        $threep=($place->threepersonprice*$request->percent)/100;
+if ($request->type=='1') {
+
+    $onepersonprice=$onep+$place->onepersonprice;
+
+    $twopersonprice=$twop+$place->twopersonprice;
+    $threepersonprice=$threep+$place->threepersonprice;
+}
+
+if ($request->type=='0') {
+    $onepersonprice=$place->onepersonprice-$onep;
+    $twopersonprice=$place->twopersonprice-$twop;
+    $threepersonprice=$place->threepersonprice-$threep;
+}
+        $place->onepersonprice=$onepersonprice;
+        $place->twopersonprice=$twopersonprice;
+        $place->threepersonprice=$threepersonprice;
+        $place->save();
+
+    }
+
+    return back()->with('success', 'Price Modify success!');
+
+
+}
 
 
 }

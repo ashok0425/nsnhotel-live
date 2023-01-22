@@ -140,6 +140,8 @@ Route::group([
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::get('/other/{id}', 'DashboardController@other')->name('other');
+    Route::get('/modify-price', 'CityController@ModifyPrice')->name('modify_price');
+
 
 
     Route::get('/state', 'StateController@list')->name('state_list');

@@ -129,6 +129,12 @@
                                                                 @csrf
                                                                 <button type="button" class="btn btn-danger city_delete">Delete</button>
                                                             </form>
+
+                                                            <button type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#pricechangemodal"
+                                                            id="price_modify"
+                                                            data-id="{{$city->id}}">
+                                                                Modify price
+                                                              </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -147,6 +153,40 @@
             </div>
           
             @include('admin.city.modal_add_city')
+
+
+            <div class="modal fade" id="pricechangemodal" tabindex="-1" role="dialog" aria-labelledby="pricechangemodalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="pricechangemodalLabel">Modify Price</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="{{route('admin_modify_price')}}">
+                        <input type="hidden" id="city_ids" name="city_id">
+                       <div class="form-group">
+                        <label for="">Enter percent need to Increase or Decrease</label>
+                        <input type="number" name="percent" placeholder="Enter percent" class="form-control" required>
+                       </div>
+                       <div class="form-group">
+  <label for="b">Increase or Decrease</label>
+  <select name="type" id="" class="form-control" required>
+   <option value="">--Select Any--</option>
+   <option value="1">Increase</option>
+   <option value="2">Decrease</option>
+
+  </select>
+                       </div>
+                        <button class="btn btn-primary">Apply</button>
+                      </form>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
             
 @stop
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -154,5 +194,12 @@
 @push('scripts')
 
      <script src="{{asset('admin/assets/js/page_city.js')}}"></script>
+
+     <script>
+        $(document).on('click','#price_modify',function(){
+            let city_id=$(this).data('id')
+            $('#city_ids').val(city_id);
+    })
+     </script>
 @endpush
 
