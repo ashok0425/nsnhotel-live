@@ -310,7 +310,6 @@
             </div>
             <div class="col-lg-4">
                 <div class="product__booking__container p-0">
-                    @guest
                         <div class="product__booking__login">
                             <div class="left">
 
@@ -335,7 +334,6 @@
                                 LOGIN
                             </span> --}}
                         </div>
-                    @endguest
                     <div class="  mt-1 custom-bg-primary text-white custom-fw-600 p-2 px-3">Only {{ $inventory_room }} Room Left</div>
                     <div class="product__booking p-0" id="booking_form_dev">
 
