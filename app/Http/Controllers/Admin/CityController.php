@@ -282,7 +282,6 @@ class CityController extends Controller
 
 
 public function ModifyPrice(Request $request){
-    $request['city_id']=36;
     $places=Place::join('rooms','rooms.hotel_id','places.id')->where('city_id',$request->city_id)->select('rooms.*')->get();
 
     foreach ($places as $key => $value) {

@@ -327,23 +327,23 @@
                                             </path>
                                         </g>
                                     </svg>
-                                </span> Log in now to get exclusive deals
+                                </span> Enter Booking Details
                             </div>
 
-                            <span class="btn cutom-bg-primary custom-fw-600  w-25 py-1"
+                            {{-- <span class="btn cutom-bg-primary custom-fw-600  w-25 py-1"
                                 onclick="window.location='{{ route('user_login') }}'">
                                 LOGIN
-                            </span>
+                            </span> --}}
                         </div>
                     @endguest
-
+                    <div class="  mt-1 custom-bg-primary text-white custom-fw-600 p-2 px-3">Only {{ $inventory_room }} Room Left</div>
                     <div class="product__booking p-0" id="booking_form_dev">
 
                         <div class="">
                             <div class="bookingonline p-0">
 
                                 <div class="nsnhotelsleftsearch">
-                                    <div class="nsnhotelsleftproperty">Only {{ $inventory_room }} Room Left</div>
+                                  
                                     <form class="leftsearchform" name="bookRoomForm" action="{{ route('book.now') }}" method="GET">
 @csrf
                                         <div class="row">
@@ -508,9 +508,9 @@
                                             @guest()
                                                 <div class="form-group mt-4">
                                                     <button type="button"
-                                                        class="btn custom-bg-primary  text-white d-block w-100"
+                                                        class="btn custom-bg-primary  text-white d-block w-100 custom-fw-700"
                                                         onclick="window.location='{{ route('user_login') }}'">Login
-                                                        Now</button>
+                                                        And Book Now</button>
 
                                                 </div>
                                             @else
@@ -768,6 +768,7 @@ $('#booking_type').on('change',function(){
             let number_of_room = parseInt(no_of_room.val());
             let number_of_adult = parseInt(no_of_adult.val());
             let selected_room = $(".select_room_btn.border-success");
+
             let oneprice = parseInt(selected_room.data('oneprice'))
             let twoprice = parseInt(selected_room.data('twoprice'))||oneprice
             let diffinprice=selected_room.data('threeprice')?selected_room.data('threeprice')-twoprice:twoprice-oneprice;
@@ -787,11 +788,9 @@ $('#booking_type').on('change',function(){
 
                     break;
                 case 3:
-
                     if (number_of_room == 1) {
                         final_adult_price = threeprice
-                    }
-                    if (number_of_room == 2) {
+                    }else if (number_of_room == 2) {
                         final_adult_price = 2 * twoprice
                     } else {
                         final_adult_price = number_of_room * oneprice
