@@ -37,6 +37,9 @@
             box-shadow: none;
             border: 0px;
         }
+        html,body{
+            scroll-behavior: smooth;
+        }
     </style>
 @endpush
 @section('main')
@@ -73,8 +76,8 @@
                 <div class="col-lg-8">
                     <div class="product__info info__container">
                         <div class="row">
-                            <div class="col-9 col-sm-10">
-                                <h1>{{ $place->name }}</h1>
+                            <div class="col-8 col-sm-10">
+                                <h2 class="custom-fs-24 custom-fw-800">{{ $place->name }}</h2>
                                 <p>
                                     {{ $place->address }}
                                 </p>
@@ -98,6 +101,9 @@
                                 </div>
                                 <div class="bot">
                                     {{ count($place->reviews) }} Ratings
+                                </div>
+                                <div class="d-block d-md-none mt-2">
+                                    <a href="#booking_form_dev" class="btn custom-bg-primary text-white" >Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -331,7 +337,7 @@
                         </div>
                     @endguest
 
-                    <div class="product__booking p-0">
+                    <div class="product__booking p-0" id="booking_form_dev">
 
                         <div class="">
                             <div class="bookingonline p-0">
@@ -362,7 +368,7 @@
                                                 </div>
 
 
-                                                <div class="col-12 col-sm-12 col-md-12">
+                                                <div class="col-12 col-sm-12 col-md-12" id="">
                                                     <div class="form-group booking_type_div">
                                                         <label>Booking Type:</label>
                                                         <select class="form-control" name="booking_type"
