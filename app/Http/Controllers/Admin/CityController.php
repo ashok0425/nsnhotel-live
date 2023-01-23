@@ -301,9 +301,9 @@ if ($request->type=='1') {
     $twopersonprice=$place->twopersonprice-$twop;
     $threepersonprice=$place->threepersonprice-$threep;
 }
-        $place->onepersonprice=$onepersonprice;
-        $place->twopersonprice=$twopersonprice;
-        $place->threepersonprice=$threepersonprice;
+        $place->onepersonprice=(int)$onepersonprice;
+        $place->twopersonprice=(int)$twopersonprice;
+        $place->threepersonprice=(int)$threepersonprice;
         $place->save();
 
     }

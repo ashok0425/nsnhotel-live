@@ -437,7 +437,7 @@
 
 
 
-                                            <div class="col-6 col-sm-6 col-md-6">
+                                            <div class="col-10 offset-2 offset-md-0 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label>Children:</label>
                                                     <div>
@@ -458,7 +458,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-6">
+                                            <div class="col-12 col-sm-6 col-md-6">
                                                 <div class="form-group bookdate-container">
                                                     <label>Check-In / Check Out</label>
                                                     <input type="text" class="form-control" autocomplete="off"
