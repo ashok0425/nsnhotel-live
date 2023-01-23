@@ -296,9 +296,7 @@ if ($request->type=='1') {
 
     $twopersonprice=$twop+$place->twopersonprice;
     $threepersonprice=$threep+$place->threepersonprice;
-}
-
-if ($request->type=='0') {
+}else {
     $onepersonprice=$place->onepersonprice-$onep;
     $twopersonprice=$place->twopersonprice-$twop;
     $threepersonprice=$place->threepersonprice-$threep;
