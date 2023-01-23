@@ -4,8 +4,14 @@
     <link rel="stylesheet" href="{{ filepath('frontend/splide.css') }}">
     <link rel="stylesheet" href="{{ filepath('frontend/jquery.lightbox.css') }}">
     <style>
+      
+       @media (max-width: 767px) {
+        .nsnhotelsleftsearch .form-control{
+        font-size: 14px!important;
+       }
+       }
         .product__booking__container .product__booking__login {
-background: rgb(40, 231, 231);
+            background: radial-gradient(ellipse at 30% 80%, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
         }
         .lightbox__nav--prev{
             background: url("{{asset('previous.png')}}")!important
@@ -312,12 +318,12 @@ background: rgb(40, 231, 231);
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="product__booking__container p-0">
-                        <div class="product__booking__login">
-                            <div class="left">
+                <div class="product__booking__container p-0  ">
+                        <div class="product__booking__login  text-center mx-auto d-flex justify-content-center">
+                            <div class=" text-center">
 
 
-                                <span class="custom-fs-22 custom-fw-800">
+                                <span class="custom-fs-22 custom-fw-800 text-center ">
                                     Booking Details
                                 </span>  
                             </div>
