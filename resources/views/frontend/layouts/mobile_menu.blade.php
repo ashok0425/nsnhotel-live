@@ -206,6 +206,8 @@
   line-height: 30px;
 }
 </style>
+@if (Request()->segment(1)!='hotels')
+
 <footer class=" mobile_footers d-block d-md-none">
     <div class="container">
         <ul class="nav nav-pills nav-justified">
@@ -262,3 +264,4 @@
         </ul>
     </div>
 </footer>
+@endif

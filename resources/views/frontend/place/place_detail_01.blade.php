@@ -111,9 +111,7 @@
                                 <div class="bot">
                                     {{ count($place->reviews) }} Ratings
                                 </div>
-                                <div class="d-block d-md-none mt-2">
-                                    <a href="#booking_form_dev" class="btn custom-bg-primary text-white" >Book Now</a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -480,7 +478,7 @@
                                         </div>
 
                                         <div class="form-group mb-0">
-                                            <div class="row">
+                                            <div class="row d-none d-md-block">
                                                 <div class="col-12 col-sm-6 col-md-6 totalpricelabel">
                                                     <label>Total Price:</label>
                                                 </div>
@@ -503,7 +501,7 @@
 
 
                                             @guest()
-                                                <div class="form-group mt-4">
+                                                <div class="form-group mt-4 d-none d-md-block">
                                                     <button type="button"
                                                         class="btn custom-bg-primary  text-white d-block w-100 custom-fw-700"
                                                         onclick="window.location='{{ route('user_login') }}'">Login
@@ -511,7 +509,7 @@
 
                                                 </div>
                                             @else
-                                                <div class="form-group mt-4">
+                                                <div class="form-group mt-4 d-none d-md-block">
                                                     <div class="row">
 
                                                     </div>
@@ -520,8 +518,8 @@
                                                             onclick="">Book Now</button>
                                                     </div>
                                                 </div>
-                                            </div>
                                         @endguest
+                                    </div>
 
 
                                         @include('frontend.offer')
@@ -567,7 +565,63 @@
 
 
    
+<footer class=" mobile_footers d-block d-md-none">
+    <div class="container py-2">
+        <div class="row">
+            <div class="col-7">
+<p class="custom-fs-18 custom-fw-800">Sub Total </p>
+            </div>
+            <div class="col-5 text-right">
+                <p class="custom-fs-18 custom-fw-800">500 </p>
 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-7">
+<p class="custom-fs-18 custom-fw-800">Tax Amount </p>
+            </div>
+            <div class="col-5 text-right">
+                <p class="custom-fs-18 custom-fw-800">500 </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-7">
+<p class="custom-fs-18 custom-fw-800">Discount </p>
+            </div>
+            <div class="col-5 text-right">
+                <p class="custom-fs-18 custom-fw-800">500 </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-7">
+<p class="custom-fs-18 custom-fw-800">Total </p>
+            </div>
+            <div class="col-5 text-right">
+                <p class="custom-fs-18 custom-fw-800">500 </p>
+
+            </div>
+        </div>
+
+
+        <div class="row mt-2">
+            <div class="col-7">
+<a class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white" href="#booking_form_dev"><i class="fas fa-edit"></i> Edit  Detail </a>
+            </div>
+            <div class="col-5 text-right">
+                <button class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white">Book Now <i class="fas fa-arrow-right"></i></button>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
 
 
 

@@ -146,6 +146,7 @@ src="https://www.facebook.com/tr?id=266463828767771&ev=PageView
 
 </div>
 @include('frontend.layouts.mobile_menu')
+    
 			
 @include('frontend.layouts.footer')
 

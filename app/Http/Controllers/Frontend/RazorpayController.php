@@ -60,14 +60,13 @@ class RazorpayController extends Controller
    public function payments(Request $request, $booking_id)
     {        
         $input = $request->all();
-        $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+        $api = new Api('rzp_live_G1kozEFg5rcBCR', 'PrlGmXKBsNd2qvfBEjNjczl5');
        
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
 
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
             $payment_detalis = null;
             try {
-
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
                 // Do something here for store payment details in database...
                 if(Session::get('payment_type') == 'cart_payment'){
