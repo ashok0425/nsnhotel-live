@@ -67,7 +67,6 @@ class RazorpayController extends Controller
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
             $payment_detalis = null;
             try {
-
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
                 // Do something here for store payment details in database...
                 if(Session::get('payment_type') == 'cart_payment'){

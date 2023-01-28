@@ -189,7 +189,6 @@ $price=$final_adult_price;
     }
 
     public function payNow(Request $request) {
-      
         $request['user_id'] = Auth::id();
         $request['name'] = $request->first_name.' '.$request->last_name;
         $request['booking_id'] = 'NSN'.str_pad(rand(1,1000000),6,0);
