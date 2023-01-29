@@ -186,8 +186,6 @@
                             return false;
                         } else {
                             window.location = "{{ session()->get('pre_url') }}";
-
-
                         }
                     }
 
