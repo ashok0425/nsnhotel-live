@@ -339,17 +339,6 @@ $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.
 
 
 
-                    if(count($cities)<=0){
-                        $citie = DB::table('city_location')->select('location_name','city_id','url' )
-                        ->where('location_name', 'like', '%' . $keyword . '%')
-                        ->limit(30)
-                        ->get();
-                        return $citie;
-                    }
-
-
-
-
 
                     if(isset($citiess)){
                         $name = $citiess->name;
@@ -357,7 +346,10 @@ $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.
                     $cities[0] = array("hotel_id" => "","name" =>$names,"slug" => "" ,"city_id" => $citiess->city_id ,"address" => "$names" ,"type" => "1city"); 
                     }
 if(isset($placess)  && !$citiess){
+
    $name = $add;
+   return $cities;
+
     $names = count($placess)."  Properties";
                     $cities[0] = array("hotel_id" => "","name" =>$name,"slug" => "" ,"city_id" => "0" ,"address" => "$names" ,"type" => "3location");
 }
