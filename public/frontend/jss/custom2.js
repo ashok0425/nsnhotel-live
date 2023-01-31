@@ -586,7 +586,7 @@ const PRICE_RANGE = {
                             name = value.slug
                         }
 
-                        html += `<li class="my-1 pb-1" data-city_id="${value.city_id}" data-hotel_id="${value.location_name}" data-area="${area}">
+                        html += `<li class="my-1 pb-1" data-city_id="${value.city_id}" data-slug="${value.location_name}" data-hotel_id="${value.hotel_id}" data-area="${area}">
                                     <a href="#"  class="my-0 py-0">
                                     <span>
                                     ${name}</span>
@@ -625,6 +625,8 @@ const PRICE_RANGE = {
                 e.preventDefault();
                 let city_id = e.currentTarget.getAttribute('data-city_id');
                 let hotel_id = e.currentTarget.getAttribute('data-hotel_id');
+                let slug = e.currentTarget.getAttribute('data-slug');
+
                 let area = e.currentTarget.getAttribute('data-area');
 
                 if (area && area != null && area != undefined && area != '') {
@@ -636,7 +638,7 @@ const PRICE_RANGE = {
                     $('#lng').val(lng)
                 } else {
                     if (hotel_id != null && hotel_id != '') {
-                        location.href = app_url + '/hotels/' + hotel_id;
+                        location.href = app_url + '/hotels/' + slug;
                         $('#hotel_id').val(hotel_id).attr('name', 'hotel');
 
                     }
