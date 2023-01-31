@@ -4,22 +4,24 @@
     <link rel="stylesheet" href="{{ filepath('frontend/splide.css') }}">
     <link rel="stylesheet" href="{{ filepath('frontend/jquery.lightbox.css') }}">
     <style>
-      
-       @media (max-width: 767px) {
-        .nsnhotelsleftsearch .form-control{
-        font-size: 14px!important;
-       }
-       }
+        @media (max-width: 767px) {
+            .nsnhotelsleftsearch .form-control {
+                font-size: 14px !important;
+            }
+        }
+
         .product__booking__container .product__booking__login {
             background: radial-gradient(ellipse at 30% 80%, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
         }
-        .lightbox__nav--prev{
-            background: url("{{asset('previous.png')}}")!important
+
+        .lightbox__nav--prev {
+            background: url("{{ asset('previous.png') }}") !important
         }
 
-        .lightbox__nav--next{
-            background: url("{{asset('next.png')}}")!important
+        .lightbox__nav--next {
+            background: url("{{ asset('next.png') }}") !important
         }
+
         .banquet_contact input,
         .banquet_contact select,
         .banquet_contact textarea {
@@ -46,7 +48,9 @@
             box-shadow: none;
             border: 0px;
         }
-        html,body{
+
+        html,
+        body {
             scroll-behavior: smooth;
         }
     </style>
@@ -111,7 +115,7 @@
                                 <div class="bot">
                                     {{ count($place->reviews) }} Ratings
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -132,9 +136,9 @@
                                             class="place__amenities col-3  my-1 my-md-2  m-0 p-0 col-md-2 text-center   
                             
                             ">
-                            <div class=" p-2">
-                                            <img src="{{ getImageUrl($item->icon) }}" alt="{{ $item->name }}"
-                                                width="20" height="26" class="">
+                                            <div class=" p-2">
+                                                <img src="{{ getImageUrl($item->icon) }}" alt="{{ $item->name }}"
+                                                    width="20" height="26" class="">
                                             </div>
                                             <span
                                                 class="@if ($item->id == 15) font-weight-bold text-success
@@ -151,7 +155,6 @@
                     <h3>Choose your room</h3>
 
                     @if ($place->roomsData)
-                      
                         @foreach ($place->roomsData as $item)
                             <div class="room__cat">
                                 <div class="top">
@@ -213,7 +216,6 @@
                                                 </span>
 
                                             </a>
-                                     
                                         @endif
 
                                         @if ($item->gallery)
@@ -246,13 +248,11 @@
                                         class="btn btn__primary d-flex align-items-center select_room_btn @if ($loop->index == 0) border-success
                                     @else 
                                     border-secondary @endif"
-                                        data-id="{{ $item->id }}"
-                                         data-oneprice="{{ $item->onepersonprice }}"
+                                        data-id="{{ $item->id }}" data-oneprice="{{ $item->onepersonprice }}"
                                         data-twoprice="{{ $item->twopersonprice }}"
                                         data-threeprice="{{ $item->threepersonprice }}"
                                         data-name="{{ $item->RoomTrans->name }}"
-                                        data-hourlyprice="{{ $item->hourlyprice }}"
-                                        >
+                                        data-hourlyprice="{{ $item->hourlyprice }}">
                                         <i
                                             class="fa fa-check-circle mx-1  text-success 
                                   
@@ -317,30 +317,32 @@
             </div>
             <div class="col-lg-4">
                 <div class="product__booking__container p-0  ">
-                        <div class="product__booking__login  text-center mx-auto d-flex justify-content-center">
-                            <div class=" text-center">
+                    <div class="product__booking__login  text-center mx-auto d-flex justify-content-center">
+                        <div class=" text-center">
 
 
-                                <span class="custom-fs-22 custom-fw-800 text-center ">
-                                    Booking Details
-                                </span>  
-                            </div>
+                            <span class="custom-fs-22 custom-fw-800 text-center ">
+                                Booking Details
+                            </span>
+                        </div>
 
-                            {{-- <span class="btn cutom-bg-primary custom-fw-600  w-25 py-1"
+                        {{-- <span class="btn cutom-bg-primary custom-fw-600  w-25 py-1"
                                 onclick="window.location='{{ route('user_login') }}'">
                                 LOGIN
                             </span> --}}
-                        </div>
-                    <div class="  mt-1 custom-bg-primary text-white custom-fw-600 p-2 px-3">Only {{ $inventory_room }} Room Left</div>
+                    </div>
+                    <div class="  mt-1 custom-bg-primary text-white custom-fw-600 p-2 px-3">Only {{ $inventory_room }}
+                        Room Left</div>
                     <div class="product__booking p-0" id="booking_form_dev">
 
                         <div class="">
                             <div class="bookingonline p-0">
 
                                 <div class="nsnhotelsleftsearch">
-                                  
-                                    <form class="leftsearchform" name="bookRoomForm" action="{{ route('book.now') }}" method="GET">
-@csrf
+
+                                    <form class="leftsearchform" name="bookRoomForm" action="{{ route('book.now') }}"
+                                        method="GET">
+                                        @csrf
                                         <div class="row">
                                             @if (isset($place->roomsData[0]))
                                                 <div class="col-12 col-sm-12 col-md-12">
@@ -375,8 +377,7 @@
                                                                     @if (Request::segment(3) == 'hourly') selected @endif>3
                                                                     Hours Price</option>
                                                             @endif
-                                                            <option value="night_price"
-                                                                 selected >Night
+                                                            <option value="night_price" selected>Night
                                                                 Price</option>
                                                         </select>
                                                     </div>
@@ -416,7 +417,8 @@
                                                                         class="text-white fas fa-minus"></i></button>
                                                                 <input type="number" readonly
                                                                     class="form-control w-50 text-center" min="1"
-                                                                    id="number_of_adult" value="1" name="number_of_adult">
+                                                                    id="number_of_adult" value="1"
+                                                                    name="number_of_adult">
                                                                 <button type="button"
                                                                     class="border-none border-0 shadow-none outline-none px-2 custom-bg-primary py-2 "
                                                                     id="adult_plus"><i
@@ -496,8 +498,10 @@
                                             @endphp
                                             <input type="hidden" id="place_id" name="place_id"
                                                 value="{{ $place->id }}">
-                                            <input type="hidden" id="room_id" name="room_id" value="{{$place->roomsData[0]->id}}">
-                                            <input type="hidden" id="room_type" name="room_type" value="{{$place->roomsData[0]->RoomTrans->name}}">
+                                            <input type="hidden" id="room_id" name="room_id"
+                                                value="{{ $place->roomsData[0]->id }}">
+                                            <input type="hidden" id="room_type" name="room_type"
+                                                value="{{ $place->roomsData[0]->RoomTrans->name }}">
 
 
                                             @guest()
@@ -518,8 +522,8 @@
                                                             onclick="">Book Now</button>
                                                     </div>
                                                 </div>
-                                        @endguest
-                                    </div>
+                                            @endguest
+                                        </div>
 
 
                                         @include('frontend.offer')
@@ -559,69 +563,71 @@
                     </div> --}}
         </div>
     </div>
-</div>
-
-
-
-
-   
-<footer class=" mobile_footers d-block d-md-none">
-    <div class="container py-2">
-        <div class="row">
-            <div class="col-7">
-<p class="custom-fs-18 custom-fw-800">Sub Total </p>
-            </div>
-            <div class="col-5 text-right">
-                <p class="custom-fs-18 custom-fw-800">500 </p>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-7">
-<p class="custom-fs-18 custom-fw-800">Tax Amount </p>
-            </div>
-            <div class="col-5 text-right">
-                <p class="custom-fs-18 custom-fw-800">500 </p>
-
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-7">
-<p class="custom-fs-18 custom-fw-800">Discount </p>
-            </div>
-            <div class="col-5 text-right">
-                <p class="custom-fs-18 custom-fw-800">500 </p>
-
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-7">
-<p class="custom-fs-18 custom-fw-800">Total </p>
-            </div>
-            <div class="col-5 text-right">
-                <p class="custom-fs-18 custom-fw-800">500 </p>
-
-            </div>
-        </div>
-
-
-        <div class="row mt-2">
-            <div class="col-7">
-<a class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white" href="#booking_form_dev"><i class="fas fa-edit"></i> Edit  Detail </a>
-            </div>
-            <div class="col-5 text-right">
-                <button class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white">Book Now <i class="fas fa-arrow-right"></i></button>
-
-            </div>
-        </div>
-
     </div>
-</footer>
+
+
+
+
+
+    <footer class=" mobile_footers d-none d-md-none">
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-7">
+                    <p class="custom-fs-18 custom-fw-800">Sub Total </p>
+                </div>
+                <div class="col-5 text-right">
+                    <p class="custom-fs-18 custom-fw-800">500 </p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-7">
+                    <p class="custom-fs-18 custom-fw-800">Tax Amount </p>
+                </div>
+                <div class="col-5 text-right">
+                    <p class="custom-fs-18 custom-fw-800">500 </p>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-7">
+                    <p class="custom-fs-18 custom-fw-800">Discount </p>
+                </div>
+                <div class="col-5 text-right">
+                    <p class="custom-fs-18 custom-fw-800">500 </p>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-7">
+                    <p class="custom-fs-18 custom-fw-800">Total </p>
+                </div>
+                <div class="col-5 text-right">
+                    <p class="custom-fs-18 custom-fw-800">500 </p>
+
+                </div>
+            </div>
+
+
+            <div class="row mt-2">
+                <div class="col-7">
+                    <a class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white" href="#booking_form_dev"><i
+                            class="fas fa-edit"></i> Edit Detail </a>
+                </div>
+                <div class="col-5 text-right">
+                    <button class="custom-fs-18 custom-fw-800 btn custom-bg-primary text-white">Book Now <i
+                            class="fas fa-arrow-right"></i></button>
+
+                </div>
+            </div>
+
+        </div>
+    </footer>
 
 
 
@@ -630,16 +636,16 @@
     <script>
         $(document).ready(function() {
 
-//if booking type is selected to houly
-$('#booking_type').on('change',function(){
-    if ($(this).val()=='hourlyprice') {
+            //if booking type is selected to houly
+            $('#booking_type').on('change', function() {
+                if ($(this).val() == 'hourlyprice') {
 
-        let hrprice=$('.select_room_btn.border-success').data('hourlyprice');
-        if(hrprice!=null){
-            $('#price').val(hrprice)
-        }
-    }
-})
+                    let hrprice = $('.select_room_btn.border-success').data('hourlyprice');
+                    if (hrprice != null) {
+                        $('#price').val(hrprice)
+                    }
+                }
+            })
 
             let guest = sessionStorage.getItem('guest')
             let rooms = sessionStorage.getItem('guest')
@@ -813,17 +819,20 @@ $('#booking_type').on('change',function(){
             calculatePrice();
 
         })
-        
+
         calculatePrice();
+
         function calculatePrice() {
             let number_of_room = parseInt(no_of_room.val());
             let number_of_adult = parseInt(no_of_adult.val());
             let selected_room = $(".select_room_btn.border-success");
 
             let oneprice = parseInt(selected_room.data('oneprice'))
-            let twoprice = parseInt(selected_room.data('twoprice'))||oneprice
-            let diffinprice=selected_room.data('threeprice')?selected_room.data('threeprice')-twoprice:twoprice-oneprice;
-            let threeprice = selected_room.data('threeprice') ? parseInt(selected_room.data('threeprice')) : twoprice +diffinprice;
+            let twoprice = parseInt(selected_room.data('twoprice')) || oneprice
+            let diffinprice = selected_room.data('threeprice') ? selected_room.data('threeprice') - twoprice : twoprice -
+                oneprice;
+            let threeprice = selected_room.data('threeprice') ? parseInt(selected_room.data('threeprice')) : twoprice +
+                diffinprice;
             let final_adult_price
             switch (number_of_adult) {
                 case 1:
@@ -841,7 +850,7 @@ $('#booking_type').on('change',function(){
                 case 3:
                     if (number_of_room == 1) {
                         final_adult_price = threeprice
-                    }else if (number_of_room == 2) {
+                    } else if (number_of_room == 2) {
                         final_adult_price = 2 * twoprice
                     } else {
                         final_adult_price = number_of_room * oneprice
@@ -893,7 +902,7 @@ $('#booking_type').on('change',function(){
                 case 10:
 
                     if (number_of_room == 4) {
-                        final_adult_price = (2 * threeprice)+ (2 * twoprice)
+                        final_adult_price = (2 * threeprice) + (2 * twoprice)
 
                     } else {
                         final_adult_price = number_of_room * twoprice
@@ -904,7 +913,7 @@ $('#booking_type').on('change',function(){
                     final_adult_price = (2 * threeprice) + twoprice
 
                     if (number_of_room == 4) {
-                        final_adult_price = (2 * threeprice)+ (2 * twoprice)+diffinprice
+                        final_adult_price = (2 * threeprice) + (2 * twoprice) + diffinprice
 
                     } else {
                         final_adult_price = number_of_room * twoprice
@@ -916,23 +925,23 @@ $('#booking_type').on('change',function(){
                         final_adult_price = 4 * threeprice
 
                     } else {
-                        final_adult_price = (3 * threeprice)+  twoprice+diffinprice
+                        final_adult_price = (3 * threeprice) + twoprice + diffinprice
                     }
                     break;
                 case 13:
-                if (number_of_room == 4) {
-                        final_adult_price =( 4 * threeprice)+diffinprice
+                    if (number_of_room == 4) {
+                        final_adult_price = (4 * threeprice) + diffinprice
 
                     } else {
-                        final_adult_price = (3 * threeprice)+ (2 * twoprice)
+                        final_adult_price = (3 * threeprice) + (2 * twoprice)
                     }
                     break;
                 case 14:
-                if (number_of_room == 4) {
-                        final_adult_price =( 3* threeprice)+(2*twoprice)+diffinprice
+                    if (number_of_room == 4) {
+                        final_adult_price = (3 * threeprice) + (2 * twoprice) + diffinprice
 
                     } else {
-                        final_adult_price = (3 * threeprice)+ (3 * twoprice)
+                        final_adult_price = (3 * threeprice) + (3 * twoprice)
                     }
                     break;
                 case 15:
@@ -940,19 +949,19 @@ $('#booking_type').on('change',function(){
                     break;
 
                 default:
-                    final_adult_price =number_of_room * oneprice
+                    final_adult_price = number_of_room * oneprice
 
                     break;
             }
-          let from=  sessionStorage.getItem("start_date");
-            let to=         sessionStorage.getItem("end_date");
+            let from = sessionStorage.getItem("start_date");
+            let to = sessionStorage.getItem("end_date");
 
-        
-           let diff=new Date(to).getTime() - new Date(from).getTime()
-let diffindays=diff / (1000 * 3600 * 24).toFixed(0);
-diffindays=diffindays!=0?diffindays:1
-let final_price=diffindays*final_adult_price;
- $('#price').val(final_price)
+
+            let diff = new Date(to).getTime() - new Date(from).getTime()
+            let diffindays = diff / (1000 * 3600 * 24).toFixed(0);
+            diffindays = diffindays != 0 ? diffindays : 1
+            let final_price = diffindays * final_adult_price;
+            $('#price').val(final_price)
         }
 
 
@@ -964,22 +973,23 @@ let final_price=diffindays*final_adult_price;
             allowed_child = number_of_room * 2;
 
         }
-        var date =  sessionStorage.getItem("start_date")?sessionStorage.getItem("start_date"):new Date();
-     var end_date = sessionStorage.getItem("end_date")?moment(sessionStorage.getItem("end_date")):(moment(date).add(1,'days'));
+        var date = sessionStorage.getItem("start_date") ? sessionStorage.getItem("start_date") : new Date();
+        var end_date = sessionStorage.getItem("end_date") ? moment(sessionStorage.getItem("end_date")) : (moment(date).add(
+            1, 'days'));
         $('#checkInOuts').daterangepicker({
-            "minDate":new Date(),
+            "minDate": new Date(),
             "autoUpdateInput": true,
             "autoApply": true,
             "parentEl": "datecontiner",
             "startDate": moment(date),
             "endDate": end_date,
         }, function(start, end, label) {
-          console.log('New date range selected: ' + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY') + ' (predefined range: ' + label + ')');
-                     sessionStorage.setItem("start_date",start.format('D MMMM, YYYY'));
-                     sessionStorage.setItem("end_date",end.format('D MMMM, YYYY'));
-                     calculatePrice()
+            console.log('New date range selected: ' + start.format('DD/MM/YYYY') + ' to ' + end.format(
+                'DD/MM/YYYY') + ' (predefined range: ' + label + ')');
+            sessionStorage.setItem("start_date", start.format('D MMMM, YYYY'));
+            sessionStorage.setItem("end_date", end.format('D MMMM, YYYY'));
+            calculatePrice()
 
         });
-
     </script>
 @endpush

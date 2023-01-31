@@ -353,27 +353,27 @@ const PRICE_RANGE = {
 
     };
 
-  
 
-        GL_BOOKING = {
-            init: function () {
-                GL_BOOKING.submitForm();
-                GL_BOOKING.bookingForm();
-            },
+
+    GL_BOOKING = {
+        init: function () {
+            GL_BOOKING.submitForm();
+            GL_BOOKING.bookingForm();
+        },
 
         bookingForm: function () {
             $('#booking_form').submit(function (event) {
                 event.preventDefault();
                 let $form = $(this);
                 let formData = getFormData($form);
-                
+
                 console.log(formData);
 
                 if (formData.numbber_of_adult == "0") {
                     alert("Please enter numbber of adult");
                     return;
                 }
-                
+
 
                 GL_BOOKING.ajaxBooking(formData)
             });
@@ -443,9 +443,9 @@ const PRICE_RANGE = {
 
         clickAllInputSearch: function () {
             $(document).on('click', '.search-suggestions a', function (e) {
-                $('input[name="location_search"]').attr("placeholder",'').val('');
+                $('input[name="location_search"]').attr("placeholder", '').val('');
 
-                 e.preventDefault();
+                e.preventDefault();
                 var text = $(this).find('span').text();
                 $('input[name="location_search"]').attr("placeholder", text.trim()).val('');
                 $(this).parents('.search-suggestions').fadeOut();
@@ -520,14 +520,14 @@ const PRICE_RANGE = {
             $(document).on('keyup', '#location_search', function () {
                 let keyword = $(this).val();
 
-                $('input[name="location_search"]').attr("placeholder",'').val(keyword);
+                $('input[name="location_search"]').attr("placeholder", '').val(keyword);
 
                 // $('#search').val('');
                 $('#search').val(keyword);
                 GL_BUSINESS_SEARCH.searchLocationSearch(keyword);
             });
         },
-       
+
         searchLocationSearch: function (keyword) {
 
             $.ajax({
@@ -541,52 +541,52 @@ const PRICE_RANGE = {
                     console.log(data)
                     let html = '<ul class="custom-scrollbar">';
                     data.forEach(function (value, index) {
-                          let icon='<i class="fas fa-home" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
+                        let icon = '<i class="fas fa-home" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
                         let type = 'Hotel';
-                        if(value.type == '2hotel') {
+                        if (value.type == '2hotel') {
                             type = 'Hotel';
-                           icon='<i class="fas fa-home" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
+                            icon = '<i class="fas fa-home" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
                         }
-                        if(value.type == '1city') {
+                        if (value.type == '1city') {
                             type = 'City';
-                           icon='<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
+                            icon = '<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
 
                         }
-                        if(value.type == '3location') {
+                        if (value.type == '3location') {
                             type = 'Location';
-                           icon='<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
+                            icon = '<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
 
                         }
                         let address = '';
-                        if(value.type == '3location') {
+                        if (value.type == '3location') {
                             address = `<br/><p style="display:inline;color: #3c6194;
     font-size: 11px;">${value.address}</p>`;
 
-    icon='<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
+                            icon = '<i class="fas fa-map-marker-alt" style="top:3px!important;margin-left:2px;font-size:18px;"></i>'
 
                         }
-let name;
-let area='';
+                        let name;
+                        let area = '';
 
 
-                        if (value.url!=''&&value.url!=null) {                          
-                            name=value.location_name
-                            name=name.replaceAll()
+                        if (value.url != '' && value.url != null) {
+                            name = value.location_name
+                            name = name.replaceAll()
                             type = 'Area';
-                            area=value.url;
+                            area = value.url;
 
-                            
-                        }else{
-                            name=value.name
-                            name=name.trim()
-                            area='';
-                         
+
+                        } else {
+                            name = value.name
+                            name = name.trim()
+                            area = '';
+
                         }
-                   if(value.name=="Select Address"){
-                    name=value.slug
-                   }
+                        if (value.name == "Select Address") {
+                            name = value.slug
+                        }
 
-                        html += `<li class="my-1 pb-1" data-city_id="${value.city_id}" data-hotel_id="${value.hotel_id}" data-area="${area}">
+                        html += `<li class="my-1 pb-1" data-city_id="${value.city_id}" data-hotel_id="${value.location_name}" data-area="${area}">
                                     <a href="#"  class="my-0 py-0">
                                     <span>
                                     ${name}</span>
@@ -601,7 +601,7 @@ let area='';
                                  </li>`;
                     });
                     html += '</ul>';
-   
+
                     $('.search-result').html(html);
                     $('.search-suggestions').fadeIn();
 
@@ -626,24 +626,24 @@ let area='';
                 let city_id = e.currentTarget.getAttribute('data-city_id');
                 let hotel_id = e.currentTarget.getAttribute('data-hotel_id');
                 let area = e.currentTarget.getAttribute('data-area');
-            
-                if (area && area!=null && area!=undefined && area!='') {
-                   
-                    let ar=area.split('&');
-                    let lat=ar[1].split('=')[1]
-                    let lng=ar[2].split('=')[1]
+
+                if (area && area != null && area != undefined && area != '') {
+
+                    let ar = area.split('&');
+                    let lat = ar[1].split('=')[1]
+                    let lng = ar[2].split('=')[1]
                     $('#lat').val(lat)
                     $('#lng').val(lng)
-                }else{
-                    if (hotel_id!=null && hotel_id!='') {
-                        location.href=app_url+'/hotels/'+hotel_id;
-                    $('#hotel_id').val(hotel_id).attr('name', 'hotel');
+                } else {
+                    if (hotel_id != null && hotel_id != '') {
+                        location.href = app_url + '/hotels/' + hotel_id;
+                        $('#hotel_id').val(hotel_id).attr('name', 'hotel');
 
-                    } 
+                    }
                     $('#city').val(city_id);
                 }
-            
-                
+
+
             });
         }
 
@@ -676,7 +676,7 @@ function getUrlAPI(slug, type = "api") {
 function callAPI(data) {
     try {
         let method = data.method || "GET";
-        let header = data.header || {'Accept': 'application/json', 'Content-Type': 'application/json'};
+        let header = data.header || { 'Accept': 'application/json', 'Content-Type': 'application/json' };
         let body = JSON.stringify(data.body);
 
         return fetch(data.url, {
@@ -726,18 +726,18 @@ function previewUploadImage(input, element_id) {
 
 
 
-$('.mobilebtn').click(function(){
-        $(this).toggleClass("click");
-        $('.sidebar').toggleClass("show");
+$('.mobilebtn').click(function () {
+    $(this).toggleClass("click");
+    $('.sidebar').toggleClass("show");
 });
-$('.feat-btn').click(function(){
-        $('nav ul .feat-show').toggleClass("show");
-        $('nav ul .first').toggleClass("rotate");
+$('.feat-btn').click(function () {
+    $('nav ul .feat-show').toggleClass("show");
+    $('nav ul .first').toggleClass("rotate");
 });
-$('.serv-btn').click(function(){
-        $('nav ul .serv-show').toggleClass("show1");
-        $('nav ul .second').toggleClass("rotate");
+$('.serv-btn').click(function () {
+    $('nav ul .serv-show').toggleClass("show1");
+    $('nav ul .second').toggleClass("rotate");
 });
-$('nav ul li').click(function(){
-        $(this).addClass("active").siblings().removeClass("active");
+$('nav ul li').click(function () {
+    $(this).addClass("active").siblings().removeClass("active");
 });
