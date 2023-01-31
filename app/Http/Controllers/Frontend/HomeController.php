@@ -254,6 +254,8 @@ class HomeController extends Controller
 // ajax search 
 
 public function locationSearch(Request $request) {
+    $keyword =   $request->get('keyword');
+
 $token=setting('goolge_map_api_key');
     $keyword =   $request->get('keyword');
     $address =str_replace(" ", "+", $keyword); ;
@@ -299,11 +301,11 @@ $location = DB::table('places')->selectRaw('"" as hotel_id, "Select Address" AS 
                     where(function ($q) use ($placess) {
 foreach ($placess as $value) {
 $q->orWhere('places.id',$value->hotel_id);
-} })->orWhere('places.address', 'like', '%%' . $keyword . '%%');    
+} })->orWhere('places.address', 'like', '%%' . $keyword . '%%')->orwhere('place_translations.name', 'like', '%%' . $keyword . '%%');    
 }
 else{
   $location = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.city_id,places.city_id,places.country_id, places.address, "3location" as type')->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->Where('places.address', 'like', '%%' . $keyword . '%%')
-  ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->where('place_translations.name', 'like', '%%' . $keyword . '%%')
+  ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->orwhere('place_translations.name', 'like', '%%' . $keyword . '%%')
   ;
 }
 
