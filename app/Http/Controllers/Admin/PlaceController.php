@@ -111,7 +111,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('name',function($row){
-  if(isset($row['user'])&&  Auth::user()->is_admin==1){
+  if(isset($row['user'])&&  (Auth::user()->is_admin==1||Auth::user()->pre_agent==1)){
         return  ' <p class="py-0 my-0">' . $row['user']['name'] . '</p>';
   }
   else{
@@ -121,7 +121,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('phone',function($row){
-  if(isset($row['user'])&&  Auth::user()->is_admin==1){
+  if(isset($row['user'])&& (Auth::user()->is_admin==1||Auth::user()->pre_agent==1)){
         return  ' <p class="py-0 my-0"><a href="tel:' . $row['user']['phone_number'] . '">' . $row['user']['phone_number'] . '</p>';
   }
   else{
@@ -131,7 +131,7 @@ class PlaceController extends Controller
 })
 
 ->addColumn('email',function($row){
-  if(isset($row['user'])&&  Auth::user()->is_admin==1){
+  if(isset($row['user'])&&  (Auth::user()->is_admin==1||Auth::user()->pre_agent==1)){
         return  '<a href="email:' . $row['user']['email'] . '">' . $row['user']['email'] . '</p>';
   }
   else{
