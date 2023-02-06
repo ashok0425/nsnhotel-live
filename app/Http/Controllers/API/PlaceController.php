@@ -231,10 +231,10 @@ return $this->success_response('Fetched Data',$data);
 
 
     public function locationSearch(Request $request) {
-
+        $token=setting('goolge_map_api_key');
         $keyword =   $request->get('keyword');
         $address =str_replace(" ", "+", $keyword); ;
-$url = "https://maps.google.com/maps/api/geocode/json?address=Nepal&sensor=false&region=India&key=AIzaSyBhUo6qphOQSK0rjDXr1pU0EdOGHu_CMP0";
+    $url = "https://maps.google.com/maps/api/geocode/json?address=india&sensor=false&region=India&key=$token";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
