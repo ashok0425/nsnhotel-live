@@ -674,35 +674,6 @@ $places.=" limit 60";
     }
 // }
 
-public function mapapi(){
-    
-  
 
-
-$url = "https://atlas.mapmyindia.com/api/places/geocode?address=ind" ;
-
-$header = array();
-$header[] = 'Content-length: 0';
-$header[] = 'Content-type: application/json';
-$header[] = 'Authorization: bearer 913de855-bdff-4ad8-bf7d-c3f00f4e68e1';
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($curl, CURLOPT_VERBOSE, 1);
-curl_setopt($curl, CURLOPT_HEADER, 1);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-$result = curl_exec($curl);
-
-$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-$response_header[] = explode("\r\n", substr($result, 0, $header_size));
-
-$body[] = substr($result, $header_size);
-
-curl_close($curl);
-dd($body);
-}
+// "913de855-bdff-4ad8-bf7d-c3f00f4e68e1"
 }
