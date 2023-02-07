@@ -186,6 +186,7 @@ class HomeController extends Controller
             'messege'=>'Thanks for contacting us.We will get back to you as soon as possible.',
              
          );
+         session()->put('messege','dddd');
         return back()->with($notification);
     }
 
@@ -322,7 +323,7 @@ $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.
                     ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
                     ->where('city_translations.name', 'like', '%%' . $keyword . '%%')
                     ->union($places)
-                    ->union($location)
+                    // ->union($location)
                     ->orderBy('type', 'asc')
                     ->get();
 
@@ -331,14 +332,11 @@ $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.
                     ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
                     ->where('city_translations.name', 'like', '%%' . $keyword . '%%')
                     ->union($places)
-                    ->union($location)
+                    // ->union($location)
                     ->orderBy('type', 'asc')
                     ->limit(30)
                     ->get();
                  
-
-
-
 
                     if(isset($citiess)){
                         $name = $citiess->name;
@@ -346,10 +344,8 @@ $subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.
                     $cities[0] = array("hotel_id" => "","name" =>$names,"slug" => "" ,"city_id" => $citiess->city_id ,"address" => "$names" ,"type" => "1city"); 
                     }
 if(isset($placess)  && !$citiess){
-
    $name = $add;
    return $cities;
-
     $names = count($placess)."  Properties";
                     $cities[0] = array("hotel_id" => "","name" =>$name,"slug" => "" ,"city_id" => "0" ,"address" => "$names" ,"type" => "3location");
 }
@@ -678,5 +674,35 @@ $places.=" limit 60";
     }
 // }
 
+public function mapapi(){
+    
+  
 
+
+$url = "https://atlas.mapmyindia.com/api/places/geocode?address=ind" ;
+
+$header = array();
+$header[] = 'Content-length: 0';
+$header[] = 'Content-type: application/json';
+$header[] = 'Authorization: bearer 913de855-bdff-4ad8-bf7d-c3f00f4e68e1';
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($curl, CURLOPT_VERBOSE, 1);
+curl_setopt($curl, CURLOPT_HEADER, 1);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+$result = curl_exec($curl);
+
+$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+$response_header[] = explode("\r\n", substr($result, 0, $header_size));
+
+$body[] = substr($result, $header_size);
+
+curl_close($curl);
+dd($body);
+}
 }
