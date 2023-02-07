@@ -292,7 +292,7 @@ if(isset($latitude) && isset($longitude)){
                         ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
                         ->where('city_translations.name', 'like', '%' . $keyword . '%')
                         ->union($places)
-                        ->union($location)
+                        // ->union($location)
                         ->orderBy('type', 'asc')
                         ->get();
 
@@ -301,7 +301,7 @@ if(isset($latitude) && isset($longitude)){
                         ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
                         ->where('city_translations.name', 'like', '%' . $keyword . '%')
                         ->union($places)
-                        ->union($location)
+                        // ->union($location)
                         ->orderBy('type', 'asc')
                         ->limit(30)
                         ->get();
