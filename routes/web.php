@@ -22,7 +22,7 @@ Auth::routes();
 Route::group([
     'namespace' => 'Frontend',
     'middleware' => []], function () use ($router) {
-        Route::get('/mapapi', 'HomeController@mapapi');
+    Route::get('/mapapi', 'HomeController@mapapi');
 
  Route::get('/webhooks', 'WebHookController@webhook');
  Route::post('/webhooks', 'WebHookController@webhookPost');
