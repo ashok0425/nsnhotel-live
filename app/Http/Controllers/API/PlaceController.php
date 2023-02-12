@@ -271,7 +271,7 @@ return $this->success_response("feteched", $c);
              }
 
              if(isset($citiess)){
-            $count=Place::where('city_id',$citiess->city_id)->get()->get();
+            $count=Place::where('city_id',$citiess->city_id)->get()->count();
 
                  $name = $citiess->name;
                  $names =$citiess->name.' &nbsp;   &nbsp;   &nbsp; &nbsp;   <br>     '. $count."  Properties";

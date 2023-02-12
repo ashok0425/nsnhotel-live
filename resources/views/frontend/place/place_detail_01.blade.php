@@ -115,7 +115,9 @@
                                 <div class="bot">
                                     {{ count($place->reviews) }} Ratings
                                 </div>
-
+                                <div class="d-md-none d-block">
+                                    <a href="#booking_form_dev" class="btn btn-primary custom-bg-primary">Book Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
