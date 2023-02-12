@@ -257,8 +257,6 @@ class HomeController extends Controller
 public function locationSearch(Request $request) {
     $keyword =   $request->get('keyword');
 
-
-        
     $places = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.name, places.address,places.city_id,places.country_id, "2hotel" as type')->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->where('place_translations.name', 'like', '%' . $keyword . '%');
 
     $citiess = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug, cities.id as city_id, "" as address, "1city" as type')
@@ -296,7 +294,7 @@ $cities = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name
              }
 
              if(isset($citiess)){
-            $count=Place::where('city_id',$citiess->city_id)->get()->get();
+            $count=Place::where('city_id',$citiess->city_id)->get()->count();
 
                  $name = $citiess->name;
                  $names =$citiess->name.' &nbsp;   &nbsp;   &nbsp; &nbsp;   <br>     '. $count."  Properties";
