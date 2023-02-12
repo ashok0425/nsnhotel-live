@@ -257,99 +257,57 @@ class HomeController extends Controller
 public function locationSearch(Request $request) {
     $keyword =   $request->get('keyword');
 
-$token=setting('goolge_map_api_key');
-    $keyword =   $request->get('keyword');
-    $address =str_replace(" ", "+", $keyword); ;
-$url = "https://maps.google.com/maps/api/geocode/json?address=india&sensor=false&region=India&key=$token";
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-$response = curl_exec($ch);
-curl_close($ch);
-$response_a = json_decode($response);
-if(isset($response_a->results[0]->geometry->location->lat)){
-$latitude = $response_a->results[0]->geometry->location->lat; 
-Session::put('latitude', $latitude);
-}
 
-if(isset($response_a->results[0]->geometry->location->lng)){
-$add = $response_a->results[0]->formatted_address;
-$longitude = $response_a->results[0]->geometry->location->lng;
-Session::put('longitude',$longitude);
-}
-$explode = explode(" ",$keyword);
-// $explode = "";
-
-if(isset($latitude) && isset($longitude)){
-$placess = Place::selectRaw("places.id as hotel_id, place_translations.name , places.slug, places.city_id,places.address, '2hotel' as type,( 6371 * acos( cos( radians(?) ) * cos( radians( lat ) )* cos( radians( lng ) - radians(?)) + sin( radians(?) ) * sin( radians( lat ) ) )) AS distance", [$latitude, $longitude, $latitude])->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')
-        ->having("distance", "<", '2')
-        ->orderBy("distance",'asc')->get();
         
-}
-        
-    $places = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.name, places.address,places.city_id,places.country_id, "2hotel" as type')
-                    ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->where('place_translations.name', 'like', '%%' . $keyword . '%%')
-                    ->orwhere('places.slug', 'like', '%%' . $keyword . '%%')
-                    ->orwhere('places.address', 'like', '%%' . $keyword . '%%');
+    $places = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.name, places.address,places.city_id,places.country_id, "2hotel" as type')->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->where('place_translations.name', 'like', '%' . $keyword . '%');
+
+    $citiess = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug, cities.id as city_id, "" as address, "1city" as type')
+             ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
+             ->where('city_translations.name', 'like', '%' . $keyword . '%')
+             ->orderBy('type', 'asc')
+             ->limit(1)
+             ->first();
+              $citiesssss = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug,cities.location,cities.country_id, cities.id as city_id, "" as address, "1city" as type')
+             ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
+             ->where('city_translations.name', 'like', '%' . $keyword . '%')
+             ->union($places)
+             // ->union($location)
+             ->orderBy('type', 'asc')
+             ->get();
+
+$cities = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name, city_location.location_name,city_location.url , cities.slug, cities.id as city_id, "" as address, "1city" as type')
+             ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
+             ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
+             ->where('city_translations.name', 'like', '%' . $keyword . '%')
+             ->union($places)
+             // ->union($location)
+             ->orderBy('type', 'asc')
+             ->limit(30)
+             ->get();
+          
 
 
-if(isset($placess)){
-$location = DB::table('places')->selectRaw('"" as hotel_id, "Select Address" AS name , places.slug, places.name, places.address,places.city_id,places.country_id, "3location" as type')
-                    ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->
-                    where(function ($q) use ($placess) {
-foreach ($placess as $value) {
-$q->orWhere('places.id',$value->hotel_id);
-} })->orWhere('places.address', 'like', '%%' . $keyword . '%%')->orwhere('place_translations.name', 'like', '%%' . $keyword . '%%');    
-}
-else{
-  $location = DB::table('places')->selectRaw('places.id as hotel_id, place_translations.name , places.slug, places.city_id,places.city_id,places.country_id, places.address, "3location" as type')->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->Where('places.address', 'like', '%%' . $keyword . '%%')
-  ->leftJoin('place_translations' , 'place_translations.place_id', 'places.id')->orwhere('place_translations.name', 'like', '%%' . $keyword . '%%')
-  ;
-}
 
+             if(count($cities)<=0){
+                 $c = DB::table('city_location')->select('location_name as name','city_id','url',"type as type","location_name as location_name","location_name as address","location_name as slug"  )
+                 ->where('location_name', 'LIKE', '%' . "$keyword" . '%')
+                 ->get();
+                return  $c;
+             }
 
-$subcity = DB::table('city_location')->selectRaw('"" as hotel_id, city_location.location_name , cities.slug, cities.id as city_id, "" as address, "1city" as type')->join('cities','cities.id','city_location.city_id');
-       
-           $citiess = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug, cities.id as city_id, "" as addresse, "1city" as type')
-                    ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
-                    ->where('city_translations.name', 'like', '%' . $keyword . '%')
-                    ->orderBy('type', 'asc')
-                    ->limit(1)
-                    ->first();
-                     $citiesssss = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug,cities.location,cities.country_id, cities.id as city_id, "" as address, "1city" as type')
-                    ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
-                    ->where('city_translations.name', 'like', '%%' . $keyword . '%%')
-                    ->union($places)
-                    // ->union($location)
-                    ->orderBy('type', 'asc')
-                    ->get();
+             if(isset($citiess)){
+            $count=Place::where('city_id',$citiess->city_id)->get()->get();
 
-    $cities = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name, city_location.location_name,city_location.url , cities.slug, cities.id as city_id, "" as address, "1city" as type')
-                    ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
-                    ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
-                    ->where('city_translations.name', 'like', '%%' . $keyword . '%%')
-                    ->union($places)
-                    // ->union($location)
-                    ->orderBy('type', 'asc')
-                    ->limit(30)
-                    ->get();
-                 
-
-                    if(isset($citiess)){
-                        $name = $citiess->name;
-                        $names =$citiess->name.' &nbsp;   &nbsp;   &nbsp; &nbsp;   <br>     '. count($citiesssss)."  Properties";
-                    $cities[0] = array("hotel_id" => "","name" =>$names,"slug" => "" ,"city_id" => $citiess->city_id ,"address" => "$names" ,"type" => "1city"); 
-                    }
+                 $name = $citiess->name;
+                 $names =$citiess->name.' &nbsp;   &nbsp;   &nbsp; &nbsp;   <br>     '. $count."  Properties";
+             $cities[0] = array("hotel_id" => "","name" =>$names,"slug" => "" ,"city_id" => $citiess->city_id ,"address" => "$names" ,"type" => "1city"); 
+             }
 if(isset($placess)  && !$citiess){
-   $name = $add;
-   return $cities;
-    $names = count($placess)."  Properties";
-                    $cities[0] = array("hotel_id" => "","name" =>$name,"slug" => "" ,"city_id" => "0" ,"address" => "$names" ,"type" => "3location");
+return $cities;
+//    $name = $add;
+$names = count($placess)."  Properties";
+             $cities[0] = array("hotel_id" => "","name" =>$name,"slug" => "" ,"city_id" => "0" ,"address" => "$names" ,"type" => "3location");
 }
-                   
 
 return $cities;
 
