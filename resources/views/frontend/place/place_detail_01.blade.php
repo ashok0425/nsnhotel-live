@@ -482,7 +482,7 @@
                                         </div>
 
                                         <div class="form-group mb-0">
-                                            <div class="row d-none d-md-block">
+                                            <div class="row ">
                                                 <div class="col-12 col-sm-6 col-md-6 totalpricelabel">
                                                     <label>Total Price:</label>
                                                 </div>
@@ -507,7 +507,7 @@
 
 
                                             @guest()
-                                                <div class="form-group mt-4 d-none d-md-block">
+                                                <div class="form-group mt-4 ">
                                                     <button type="button"
                                                         class="btn custom-bg-primary  text-white d-block w-100 custom-fw-700"
                                                         onclick="window.location='{{ route('user_login') }}'">Login
@@ -515,7 +515,7 @@
 
                                                 </div>
                                             @else
-                                                <div class="form-group mt-4 d-none d-md-block">
+                                                <div class="form-group mt-4 ">
                                                     <div class="row">
 
                                                     </div>
