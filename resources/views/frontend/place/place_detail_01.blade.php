@@ -483,10 +483,10 @@
 
                                         <div class="form-group mb-0">
                                             <div class="row ">
-                                                <div class="col-12 col-sm-6 col-md-6 totalpricelabel">
+                                                <div class="col-6 col-sm-6 col-md-6 totalpricelabel">
                                                     <label>Total Price:</label>
                                                 </div>
-                                                <div class="col-12 col-sm-6 col-md-6 readonlyforminput inrsymbol">
+                                                <div class="col-6 col-sm-6 col-md-6 readonlyforminput ">
                                                     <span><input type="text" name="price" value="0"
                                                             id="price" readonly></span>
                                                 </div>
