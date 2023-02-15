@@ -77,43 +77,7 @@
         }(document, "script"));
     </script>
     <!-- End PushAlert -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-315826411');
-    </script>
-
-
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-315826411');
-    </script>
-    <script>
-        var gmz_params = {
-            i18n: {
-                guest: 'Guest',
-                guests: 'Guests',
-                infant: 'Infant',
-                infants: 'Infants',
-                adult: 'Adult',
-                adults: 'Adults',
-                children: 'Children',
-                featured: 'Featured',
-            }
-        }
-    </script>
     @stack('style')
     <!-- Google Tag Manager -->
     <script>
@@ -130,17 +94,16 @@
             j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PP8CCDF');
+        })(window, document, 'script', 'dataLayer', 'GTM-M4HW2BZ');
     </script>
     <!-- End Google Tag Manager -->
 </head>
 
 <body>
-    {{-- !-- Google Tag Manager (noscript) --> --}}
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP8CCDF" height="0" width="0"
+    {{-- <!-- Google Tag Manager (noscript) --> --}}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4HW2BZ" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Meta Pixel Code -->
+    {{-- <!-- End Google Tag Manager (noscript) --> --}}
     <script>
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;

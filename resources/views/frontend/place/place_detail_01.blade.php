@@ -486,7 +486,7 @@
                                                 <div class="col-6 col-sm-6 col-md-6 totalpricelabel">
                                                     <label>Total Price:</label>
                                                 </div>
-                                                <div class="col-6 col-sm-6 col-md-6 readonlyforminput ">
+                                                <div class="col-6 col-sm-6 col-md-6 readonlyforminput">
                                                     <span><input type="text" name="price" value="0"
                                                             id="price" readonly></span>
                                                 </div>
