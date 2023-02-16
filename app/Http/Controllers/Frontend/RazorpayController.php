@@ -13,7 +13,6 @@ class RazorpayController extends Controller
     
     public function payWithRazorpay(Request $request)
     {
-        // dd('ss');
         if($request->get('booking_id') && $request->get('booking_id') > 0) {
 
           //$booking = Booking::findOrFail($request->get('booking_id'));
