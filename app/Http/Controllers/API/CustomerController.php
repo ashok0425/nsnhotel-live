@@ -98,7 +98,11 @@ class CustomerController extends Controller
         } 
         else
         {
+
             $user = $this->findUserByMobile($request->mobile);
+              if($user->status==3){
+            return $this->error('Invalid Credientials','',400);
+        }
             $this->sendOtp($request->mobile);
 
             return $this->success_response('We have sent an otp at your registered mobile number.');
@@ -114,6 +118,10 @@ class CustomerController extends Controller
         }else{
             $otp=str_pad(rand(1,1000000),6,'0');
 
+        }
+
+        if($customer->status==3){
+            return $this->error('Invalid Credientials','',400);
         }
         $customer->otp = $otp;
         $customer->save();
@@ -185,9 +193,7 @@ class CustomerController extends Controller
                 }
             }
 
-            if($user->status==3){
-                return $this->error('Incorrect opt','',400);
-            }
+          
                 $token  = Str::random(60);
                 $user->api_token = hash('sha256', $token);
                 $user->save();
