@@ -184,6 +184,10 @@ class CustomerController extends Controller
                     return $this->error('Incorrect opt','',400);
                 }
             }
+
+            if($user->status==3){
+                return $this->error('Incorrect opt','',400);
+            }
                 $token  = Str::random(60);
                 $user->api_token = hash('sha256', $token);
                 $user->save();
@@ -264,5 +268,13 @@ class CustomerController extends Controller
        //  $this->whatsapp_cancel('91'.$mm->phone_number, $mm->name);
         $this->whatsapp_cancel('919958277997'.$booking->phone_number, $booking->name);        
         return $this->success_response('Booking  updated successfully',$booking);
+    }
+
+    public function deactiveAccount(Request $request){
+        $user=$this->getUserByApiToken($request);
+        $user->status=3;
+        $user->save();
+        return $this->success_response('Account Deleted','');
+
     }
 }

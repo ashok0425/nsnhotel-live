@@ -72,6 +72,8 @@ $router->group([
     $router->post('customer/login','CustomerController@loginCustomer');
     $router->post('send/otp','CustomerController@sendOtp');
     $router->post('verify/login','CustomerController@getLogin');
+    $router->get('customer/delete-account','CustomerController@deactiveAccount');
+
     $router->middleware(['Hastoken'])->group(function () use ($router) {
         $router->post('update/profile/customer','UpdateController@updateCustomerProfile');
          $router->post('room/booking','BookingController@bookRoom');

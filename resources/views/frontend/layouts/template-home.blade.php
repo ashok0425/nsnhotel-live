@@ -4,7 +4,7 @@
 <head>
     <title>Home - NSN Hotels</title>
     <meta charset="UTF-8">
-    <meta name="description" content="List of all the hotels of your favourite places in India.">
+
     {!! SEO::generate() !!}
     <meta name="viewport"
         content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
