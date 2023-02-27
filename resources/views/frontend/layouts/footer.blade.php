@@ -34,7 +34,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 col-6">
-                            <a href="" class="py-5">
+                            <a href="https://apple.co/3m8XXgO" class="py-5">
                                 <img src="{{ getImageurl('appstore.svg', true) }}" alt="NSN HOTELS APP Store"
                                     class="img-fluid ">
                             </a>
