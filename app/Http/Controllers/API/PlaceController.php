@@ -54,7 +54,7 @@ class PlaceController extends Controller
     {
        $places=Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id');
        if(isset($is_toprated)&&$is_toprated==1){
-        $places=$places->where('top_rated',1);
+        $places=$places->where('top_rated',1)->where('rating','>=',4);
        }else{
         $places=$places->where('place_type',json_encode([$id]));
        }
