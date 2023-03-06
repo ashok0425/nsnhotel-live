@@ -28,8 +28,11 @@ class HotelReviewController extends Controller
         if ($istop_rated) {
             $hotels=Place::where('top_rated',1)->pluck('id');
 
-        }else{
+        }elseif(isset($from)){
             $hotels=Place::whereIn('id',[$from,$to])->pluck('id');
+
+        }else{
+            $hotels=Place::query()->pluck('id');
 
         }
         $feedback=[
