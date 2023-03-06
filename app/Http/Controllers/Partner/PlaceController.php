@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Partner;
 
 
 use App\Commons\Response;
+use App\HotelReview;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\City;
@@ -133,6 +134,14 @@ class PlaceController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
+            $rev=new HotelReview();
+            $rev->product_id=$model->id;
+            $rev->user_id=8;
+            $rev->rating=5;
+            $rev->feedback='';
+           $rev->save();
+           $avg=HotelReview::where('product_id',$model->id)->avg('rating');
+           Place::where('id',$model->id)->update(['rating'=>$avg]);
             return redirect(route('partner_place_list'))->with('success', 'Create place success!');
         }
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Commons\APICode;
 use App\Commons\Response;
+use App\HotelReview;
 use App\Http\Controllers\Controller;
+use App\Models\Place;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +36,8 @@ try {
         // }
 
        DB::table('hotel_reviews')->insert($review);
+       $avg=HotelReview::where('product_id',$request->product_id)->avg('rating');
+       Place::where('id',$request->product_id)->update(['rating'=>$avg]);
 
 return response('success');
     }
