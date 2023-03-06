@@ -29,7 +29,7 @@ class HotelReviewController extends Controller
             $hotels=Place::where('top_rated',1)->pluck('id');
 
         }elseif(isset($from)){
-            $hotels=Place::whereIn('id',[$from,$to])->pluck('id');
+            $hotels=Place::whereBetween('id',[$from,$to])->pluck('id');
 
         }else{
             $hotels=Place::query()->pluck('id');
