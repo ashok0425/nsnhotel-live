@@ -42,14 +42,14 @@ class PlaceController extends Controller
 
     public function placeBycity($id)
     {
-       $places= Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('price','asc')->where('places.city_id',$id)->get();
+       $places= Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('price','asc')->where('places.city_id',$id)->where('rating','>=',3)->limit(10)->get();
         return $this->success_response('Data ',$places);
     }
 
 
     public function PlaceBytype($id,$is_toprated=null)
     {
-       $places=Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('price','asc');
+       $places=Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->where('rating','>=',3)->orderBy('price','asc');
        if(isset($is_toprated)&&$is_toprated==1){
         $places=$places->where('top_rated',1)->where('rating','>=',4);
        }else{
