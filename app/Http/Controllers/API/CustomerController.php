@@ -101,7 +101,7 @@ class CustomerController extends Controller
 
             $user = $this->findUserByMobile($request->mobile);
               if($user->status==3){
-            return $this->error('Invalid Credientials','',400);
+            return $this->error_response('Invalid Credientials','',400);
         }
             $this->sendOtp($request->mobile);
 
