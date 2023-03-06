@@ -42,23 +42,20 @@ class PlaceController extends Controller
 
     public function placeBycity($id)
     {
-       $places= Place::select("places.*",'rooms.onepersonprice as price',"hotel_reviews.avg_rating","hotel_reviews.rating_count","rooms.discount_percent")
-       ->leftjoin(DB::raw("(SELECT avg(rating) as avg_rating,hotel_reviews.product_id,count(*) as rating_count FROM hotel_reviews ) as hotel_reviews"),function($join){
-             $join->on("hotel_reviews.product_id","=","places.id");
-       })->join('rooms','rooms.hotel_id','places.id')->where('city_id',$id)->get();
+       $places= Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('rating','desc')->where('city_id',$id)->get();
         return $this->success_response('Data ',$places);
     }
 
 
     public function PlaceBytype($id,$is_toprated=null)
     {
-       $places=Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id');
+       $places=Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('rating','desc');
        if(isset($is_toprated)&&$is_toprated==1){
         $places=$places->where('top_rated',1)->where('rating','>=',4);
        }else{
         $places=$places->where('place_type',json_encode([$id]));
        }
-       $places= $places->get();
+       $places= $places->limit(10)->get();
         return $this->success_response('Data fetched',$places,200);
     }
 

@@ -145,6 +145,7 @@ Route::group([
     Route::get('/other/{id}', 'DashboardController@other')->name('other');
     Route::get('/modify-price', 'CityController@ModifyPrice')->name('modify_price');
 
+    Route::get('addreview/{from?}/{to?}/{top?}','HotelReviewController@create');
 
 
     Route::get('/state', 'StateController@list')->name('state_list');

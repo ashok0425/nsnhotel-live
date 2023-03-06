@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\HotelReview;
+use App\Models\Place;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class HotelReviewController extends Controller
 {
     /**
@@ -22,9 +23,38 @@ class HotelReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($from,$to,$istop_rated=null)
     {
-        //
+        if ($istop_rated) {
+            $hotels=Place::where('top_rated',1)->pluck('id');
+
+        }else{
+            $hotels=Place::whereIn('id',[$from,$to])->pluck('id');
+
+        }
+        $feedback=[
+            'Great Hotel ,Nice staff',
+            'Nice hotel, nice staff. Safely stay',
+            'great experience',
+            'very nice hotel. Hygenic',
+            'Amazing stay, Grromed staff, service quality very nice',
+            'its fair to stay there',
+
+        ];
+        foreach ($hotels as $key => $value) {
+           $rev=new HotelReview;
+           $rev->product_id=$value;
+           $rev->user_id=8;
+           $rev->rating=5;
+           $rev->feedback=$feedback[rand(0,5)];
+          $rev->save();
+       
+          $avg=HotelReview::where('product_id',$value)->avg('rating');
+          Place::where('id',$value)->update(['rating'=>$avg]);
+
+        }
+        return 'success';
+
     }
 
     /**
