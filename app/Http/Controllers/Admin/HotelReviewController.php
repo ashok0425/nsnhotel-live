@@ -23,7 +23,7 @@ class HotelReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($from,$to,$istop_rated=null)
+    public function create($from=null,$to=null,$istop_rated=null)
     {
         if ($istop_rated) {
             $hotels=Place::where('top_rated',1)->pluck('id');
