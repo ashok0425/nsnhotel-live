@@ -42,7 +42,7 @@ class PlaceController extends Controller
 
     public function placeBycity($id)
     {
-       $places= Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('rating','desc')->where('city_id',$id)->get();
+       $places= Place::join('rooms','rooms.hotel_id','places.id')->select('places.*','rooms.onepersonprice as price','rooms.discount_percent','city_translations.name as city_name')->where('rooms.onepersonprice','!=',null)->join('cities','places.city_id','cities.id')->join('city_translations','city_translations.city_id','cities.id')->orderBy('rating','desc')->where('places.city_id',$id)->get();
         return $this->success_response('Data ',$places);
     }
 
