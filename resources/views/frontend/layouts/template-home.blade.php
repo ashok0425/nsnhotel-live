@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Home - NSN Hotels</title>
+
     <meta charset="UTF-8">
 
     {!! SEO::generate() !!}
@@ -13,6 +13,7 @@
         href="{{ getImageUrl(setting('logo') ? setting('logo') : 'assets/images/assets/logo.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @if (url()->current() == '/')
+        <title>Home - NSN Hotels</title>
         <meta name="title" content="Best hotel with a challenging price | NSN Hotels" />
         <meta name="description"
             content="Choose from a wide range of properties which nsnhotels.com offers. Search now! Book your Hotel online. Great rates. Secure Booking. 24/7 Customer Service. Villas. Motels. Best Price Guarantee. Save 10% with Genius. No Booking Fees." />
