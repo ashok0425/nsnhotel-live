@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
+public $token="EAASatyWhhnIBAHrd80YCnkE4pNMyveKYn3UbraT4b4shJZChVDTagBd6x8BZChQurnjpZCkZACWsS3LHKpXZCZC6kEmKMyWf94khdnZBtXNnk3EpC4JKyZAZBDQ9oudJmIBpCa2EhpKaRjNaZCupWTfnGNoZAybqMKrwYUcQf9RS02poRAq0ZAD6560ldCuD1XwQyZAsZBnlIa0DmrKwZDZD";
     public function uploadImage($file, $dir,$copy=false)
     {
         $quality=50;
@@ -129,7 +129,7 @@ curl_setopt_array($curl, array(
 }',
 
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer EAASatyWhhnIBANTY75daTfseOQwO38NXuqGkpTZCVM12ZBbogRzrkZCz3qVaBGZCP9yNBsF1y0q4eYmnKPWj7YCAjmtH6bcNVHhbJDNbefXuBqJSWbQ582kCpr6euRPzdj1HjB7UymGL9kzWHixZCrYuJHeY7VjZAijPKjU2TXo3EvshlRkHOFvpmPQSsGiZCUrUNhaG2c4IgZDZD',
+    "Authorization: Bearer $this->token",
     'Content-Type: application/json'
   ),
 ));
@@ -192,7 +192,7 @@ curl_setopt_array($curl, array(
 }',
 
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer EAASatyWhhnIBANTY75daTfseOQwO38NXuqGkpTZCVM12ZBbogRzrkZCz3qVaBGZCP9yNBsF1y0q4eYmnKPWj7YCAjmtH6bcNVHhbJDNbefXuBqJSWbQ582kCpr6euRPzdj1HjB7UymGL9kzWHixZCrYuJHeY7VjZAijPKjU2TXo3EvshlRkHOFvpmPQSsGiZCUrUNhaG2c4IgZDZD',
+    "Authorization: Bearer $this->token ",
     'Content-Type: application/json'
   ),
 ));
@@ -246,7 +246,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
-  'Authorization: Bearer EAASatyWhhnIBANTY75daTfseOQwO38NXuqGkpTZCVM12ZBbogRzrkZCz3qVaBGZCP9yNBsF1y0q4eYmnKPWj7YCAjmtH6bcNVHhbJDNbefXuBqJSWbQ582kCpr6euRPzdj1HjB7UymGL9kzWHixZCrYuJHeY7VjZAijPKjU2TXo3EvshlRkHOFvpmPQSsGiZCUrUNhaG2c4IgZDZD',
+ "Authorization: Bearer $this->token ",
   'Content-Type: application/json'
 ),
 ));
@@ -298,7 +298,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
-  'Authorization: Bearer EAASatyWhhnIBANTY75daTfseOQwO38NXuqGkpTZCVM12ZBbogRzrkZCz3qVaBGZCP9yNBsF1y0q4eYmnKPWj7YCAjmtH6bcNVHhbJDNbefXuBqJSWbQ582kCpr6euRPzdj1HjB7UymGL9kzWHixZCrYuJHeY7VjZAijPKjU2TXo3EvshlRkHOFvpmPQSsGiZCUrUNhaG2c4IgZDZD',
+ "Authorization: Bearer $this->token ",
   'Content-Type: application/json'
 ),
 ));
@@ -338,7 +338,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
-  'Authorization: Bearer EAASatyWhhnIBANTY75daTfseOQwO38NXuqGkpTZCVM12ZBbogRzrkZCz3qVaBGZCP9yNBsF1y0q4eYmnKPWj7YCAjmtH6bcNVHhbJDNbefXuBqJSWbQ582kCpr6euRPzdj1HjB7UymGL9kzWHixZCrYuJHeY7VjZAijPKjU2TXo3EvshlRkHOFvpmPQSsGiZCUrUNhaG2c4IgZDZD',
+ "Authorization: Bearer $this->token ",
   'Content-Type: application/json'
 ),
 ));
