@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-public $token="EAASatyWhhnIBAPhgk6xc6Olje5mK89iaKGPm5I5UQoxpJZCswShGBIs7yZBnsN8ZCeIGPHWI9MJTbTppcsJzOcAJMUZACoTvCS0Dt9EtVpgpD9Npl9bfZA8pbC70Obl2SX9kPhciIeTXV7mkZB0JuyZBITkLZAQKZBpoJ3k4K7erZBklKdjqr5nXuPaXQXQD0jZBt9w85ZCYQeXZC5AZDZD";
+public $token="EAASatyWhhnIBAL8PL5S3fVouaCPbBtFDiNxLVFmxFjX6RhmyI5CodhJBju6FhVjCd8JgNP8zEybMRx8pPPP6TZCzBWDYmZAwbeVjuE4QyFWfO1RglB4DLpeGP3ONr23ROkKYk9qMEsJoZAmKZBKZA6zZCiJBJj7FZBa5ZB85oKAZAvN4fr9SZAIEdvkNX34GZAr0FNkO0ynuFDFxQZDZD";
     public function uploadImage($file, $dir,$copy=false)
     {
         $quality=50;
@@ -95,7 +95,7 @@ public function whatsapp_verification($phone,$otp){
     // otp_verification
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',
+  CURLOPT_URL => 'https://graph.facebook.com/v14.0/112673221718066/messages',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -142,7 +142,7 @@ return $response;
 public function whatsapp_booking($phone,$name,$id,$data,$map=null){
     $curl = curl_init();
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',
+  CURLOPT_URL => 'https://graph.facebook.com/v14.0/112673221718066/messages',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -210,7 +210,7 @@ public function whatsapp_cancel($phone,$name){
   $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',
+CURLOPT_URL => 'https://graph.facebook.com/v14.0/112673221718066/messages',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -262,7 +262,7 @@ public function whatsapp_review($phone,$name){
   $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',
+CURLOPT_URL => 'https://graph.facebook.com/v14.0/112673221718066/messages',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -314,7 +314,7 @@ public function whatsapp_checkin($phone){
   $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://graph.facebook.com/v14.0/112589354976551/messages',
+CURLOPT_URL => 'https://graph.facebook.com/v14.0/112673221718066/messages',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
