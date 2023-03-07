@@ -12,9 +12,11 @@
     <link rel="icon" sizes="16x16"
         href="{{ getImageUrl(setting('logo') ? setting('logo') : 'assets/images/assets/logo.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="title" content="Best hotel with a challenging price | NSN Hotels" />
-    <meta name="description"
-        content="Choose from a wide range of properties which nsnhotels.com offers. Search now! Book your Hotel online. Great rates. Secure Booking. 24/7 Customer Service. Villas. Motels. Best Price Guarantee. Save 10% with Genius. No Booking Fees." />
+    @if (url()->current() == '/')
+        <meta name="title" content="Best hotel with a challenging price | NSN Hotels" />
+        <meta name="description"
+            content="Choose from a wide range of properties which nsnhotels.com offers. Search now! Book your Hotel online. Great rates. Secure Booking. 24/7 Customer Service. Villas. Motels. Best Price Guarantee. Save 10% with Genius. No Booking Fees." />
+    @endif
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" />
