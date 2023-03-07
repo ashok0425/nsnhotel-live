@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-public $token="EAASatyWhhnIBAKNe3YzFmkoHl66ZBHA2y4xSyZAjFhlxK3xfMrSsmH70wtomcUR5V6xPyVZCMlMfn9iAfeJvbuHfUBOsleXKP41dM3UgjZBN1ub8shSsZAURPnEiZBCEIhFrvJ8DU5eOUa1F2gjykwXo4gPaF5hqrZBmXunnSZCQ1BEdWJepxPbBSHtkTTUENxZAFgbryeVLbnQZDZD";
+public $token="EAASatyWhhnIBALD9ZBJrWGySuZA5ESWjKf7uuF1jYIekDToHxrj6c9D94jYAZBZBvxNlRmljfQk9LnoOwWhAahSSWUyH9dvDQybYLWyOXpMNj1Er9w4wKQV3cZAGyPZC90CcWx5ATIjcgrSjRJcLMPZAVTELZCP5quyMgOfPhPIOZBYLWWkF5DCigEIYKtWqbcgxrzNZBWGseohwZDZD";
 
     public function uploadImage($file, $dir,$copy=false)
     {
@@ -158,7 +158,7 @@ curl_setopt_array($curl, array(
     "to": "'.$phone.'",
     "type": "template",
     "template": {
-        "name": "booking_confirmation",
+        "name": "booking_confirmations",
         "language": {
             "code": "en_US"
         },
@@ -254,6 +254,7 @@ CURLOPT_HTTPHEADER => array(
 
 $response = curl_exec($curl);
 curl_close($curl);
+return $response;
 }
 
 
@@ -306,7 +307,7 @@ CURLOPT_HTTPHEADER => array(
 
 $response = curl_exec($curl);
 curl_close($curl);
-
+return $response;
 }
 
 

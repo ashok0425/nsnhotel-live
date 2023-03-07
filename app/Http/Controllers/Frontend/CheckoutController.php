@@ -357,7 +357,7 @@ $price=$final_adult_price;
 // $ph=substr($phone,1);
 $data="Hotel Name:$place->name, Check-in Date:$start_date 12pm onwards, Check-out Date:$end_date 11 am, Number of Rooms:$request->number_of_room, Number of Nights:1, Number of Adult:-$request->numbber_of_adult, Number of Childres:-$request->numbber_of_children, Booking Amount:$booking->amount, Hotel Address:$place->address";
 $map='map';
-$this->whatsapp_review($request->phone_code.$phone, $request->first_name);
+ $this->whatsapp_review($request->phone_code.$phone, $request->first_name);
        $res= $this->whatsapp_booking($request->phone_code.$phone,$request->first_name,$booking->booking_id,$data,$map);
         $this->whatsapp_booking('91'.$place_email->phone_number,$place->first_name,$booking->id,$data,$map);
         $this->whatsapp_booking('919958277997',$request->first_name,$booking->id,$data,$map);       
