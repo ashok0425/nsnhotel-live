@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-public $token="EAASatyWhhnIBALD9ZBJrWGySuZA5ESWjKf7uuF1jYIekDToHxrj6c9D94jYAZBZBvxNlRmljfQk9LnoOwWhAahSSWUyH9dvDQybYLWyOXpMNj1Er9w4wKQV3cZAGyPZC90CcWx5ATIjcgrSjRJcLMPZAVTELZCP5quyMgOfPhPIOZBYLWWkF5DCigEIYKtWqbcgxrzNZBWGseohwZDZD";
+
 
     public function uploadImage($file, $dir,$copy=false)
     {
@@ -130,7 +130,7 @@ curl_setopt_array($curl, array(
 }',
 
   CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer $this->token",
+    "Authorization: Bearer ".env('WHATSAPP_API')."",
     'Content-Type: application/json'
   ),
 ));
@@ -193,7 +193,7 @@ curl_setopt_array($curl, array(
 }',
 
   CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer $this->token ",
+    "Authorization: Bearer ".env('WHATSAPP_API')." ",
     'Content-Type: application/json'
   ),
 ));
@@ -247,7 +247,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
- "Authorization: Bearer $this->token ",
+ "Authorization: Bearer ".env('WHATSAPP_API')." ",
   'Content-Type: application/json'
 ),
 ));
@@ -300,7 +300,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
- "Authorization: Bearer $this->token ",
+ "Authorization: Bearer ".env('WHATSAPP_API')." ",
   'Content-Type: application/json'
 ),
 ));
@@ -340,7 +340,7 @@ CURLOPT_POSTFIELDS =>'{
 }',
 
 CURLOPT_HTTPHEADER => array(
- "Authorization: Bearer $this->token ",
+ "Authorization: Bearer ".env('WHATSAPP_API')." ",
   'Content-Type: application/json'
 ),
 ));

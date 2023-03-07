@@ -52,7 +52,7 @@ class BookingController extends Controller
          $model->status = '0';
          $model->save();
 
-         $this->whatsapp_cancel('977'.$mm->phone_number, $mm->name);
+       return  $this->whatsapp_cancel('977'.$mm->phone_number, $mm->name?$mm->name:"Customer");
          $this->whatsapp_cancel('919958277997', $mm->name);
          return back()->with('success', 'Hotel Cancel successfully!');
      }
