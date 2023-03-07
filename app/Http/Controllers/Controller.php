@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-public $token="EAASatyWhhnIBAHrd80YCnkE4pNMyveKYn3UbraT4b4shJZChVDTagBd6x8BZChQurnjpZCkZACWsS3LHKpXZCZC6kEmKMyWf94khdnZBtXNnk3EpC4JKyZAZBDQ9oudJmIBpCa2EhpKaRjNaZCupWTfnGNoZAybqMKrwYUcQf9RS02poRAq0ZAD6560ldCuD1XwQyZAsZBnlIa0DmrKwZDZD";
+public $token="EAASatyWhhnIBADPaY5tIQCNOtX78AOi8wTZA7ixpz2DZB7oQ0bEO618ZAMjaSlJqhKhBnm905sQqZBaFpH5jOZB9FYFzgB8Q170KHWYQtSGbkZApfmZBTUQNQFIOkkNW92JfQcQdWHojM5v4izN1dulGZA8MJBDp2DRrPEBNLhnmNtUthURUuAC59ruxUcyPmVgUZAuq2wdOaUQZDZD";
     public function uploadImage($file, $dir,$copy=false)
     {
         $quality=50;
