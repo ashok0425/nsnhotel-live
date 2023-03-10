@@ -241,7 +241,7 @@ return $this->success_response('Fetched Data',$data);
               $citiesssss = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name , cities.slug,cities.location,cities.country_id, cities.id as city_id, "" as address, "1city" as type')
              ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
              ->where('city_translations.name', 'like', '%' . $keyword . '%')
-             ->orwhere('city_location.location_name', 'like', '%' . $keyword . '%')
+         
              ->union($places)
              // ->union($location)
              ->orderBy('type', 'asc')
@@ -251,6 +251,7 @@ $cities = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name
              ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
              ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
              ->where('city_translations.name', 'like', '%' . $keyword . '%')
+             ->orwhere('city_location.location_name', 'like', '%' . $keyword . '%')
              ->union($places)
              // ->union($location)
              ->orderBy('type', 'asc')
