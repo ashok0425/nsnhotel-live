@@ -90,7 +90,7 @@
                     <div class="product__info info__container">
                         <div class="row">
                             <div class="col-8 col-sm-10">
-                                <h2 class="custom-fs-24 custom-fw-800">{{ $place->name }}</h2>
+                                <h1 class="custom-fs-24 custom-fw-800">{{ $place->name }}</h1>
                                 <p>
                                     {{ $place->address }}
                                 </p>
