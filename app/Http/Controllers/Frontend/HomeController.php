@@ -277,6 +277,8 @@ $cities = DB::table('cities')->selectRaw('"" as hotel_id, city_translations.name
              ->leftJoin('city_translations' , 'city_translations.city_id', 'cities.id')
              ->leftJoin('city_location' , 'city_location.city_id', 'cities.id')
              ->where('city_translations.name', 'like', '%' . $keyword . '%')
+             ->orwhere('city_location.location_name', 'like', '%' . $keyword . '%')
+
              ->union($places)
              // ->union($location)
              ->orderBy('type', 'asc')
