@@ -58,8 +58,10 @@
         }
 
         .nsnbannerbackground-2 {
-            max-height: 80vh !important;
+            max-height: 500px !important;
         }
+
+
 
         .custom-bg-gradient {
             background: rgb(255, 255, 255);
@@ -68,6 +70,16 @@
 
         .text-capitilize {
             text-transform: capitalize;
+        }
+
+        del {
+            text-decoration: line-through !important;
+        }
+
+        @media (max-width:560px) {
+            .nsnbannerbackground-2 {
+                max-height: 700px !important;
+            }
         }
     </style>
     <!-- PushAlert -->
@@ -128,6 +140,8 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=793160078411322&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+
+
 </head>
 
 <body>
